@@ -9,6 +9,11 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name','slug', 'image', 'email','address','p_iva','user_id',
+    ];
+
+
     public function user(){
 
         return $this->hasOne(User::class);
