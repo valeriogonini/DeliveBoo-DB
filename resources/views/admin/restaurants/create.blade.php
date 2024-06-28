@@ -29,7 +29,10 @@
             <input class="form-control" name="address" id="address" rows="3"
                 placeholder="Via Roma ,15..."> {{old('p_iva')}}</input>
         </div>
-        <div class="d-flex gap-2">
+        <div class="mb-3">inserisci le tipoligia del tuo ristorante</div>
+        <div class="d-flex gap-2 mb-3">
+
+           
             @foreach ($types as $type)
 
               <div class="form-check">

@@ -38,10 +38,11 @@ class RestaurantController extends Controller
 
         $request->validate([
             'name' => 'required|min:3|max:255',
-            'email' => 'unique|required|max:255',
-            'p_iva' => 'required|unique|max:11',
+            'email' => 'required|max:255|unique',
+            'p_iva' => 'required|max:11|unique',
             'address'=> 'required|max:255',
-            'image'=> 'nullable|max:255'
+            'image'=> 'nullable|max:255',
+            
         ]);
 
 
