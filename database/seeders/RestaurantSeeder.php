@@ -8,6 +8,8 @@ use App\Models\Restaurant;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\DB;
+
 
 class RestaurantSeeder extends Seeder
 {
@@ -49,6 +51,8 @@ class RestaurantSeeder extends Seeder
 
         $users = User::all();
         $users_ids = $users->pluck('id')->all();
+        // DB::table('restaurants')->truncate();
+
 
         foreach ($restaurants as $restaurant) {
             $new_restaurant = new Restaurant();
