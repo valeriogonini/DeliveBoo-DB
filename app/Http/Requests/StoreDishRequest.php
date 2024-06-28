@@ -24,13 +24,14 @@ class StoreDishRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'image'=> 'nullable|max:255',
-            'price'=>'required|numeric|between:0,9999.99',
-            'description'=>'nullable',
-            
-            
+            'image' => 'nullable|max:255',
+            'price' => 'required|numeric|between:0,9999.99',
+            'description' => 'nullable',
+            'availability' => 'required'
 
-            
+
+
+
         ];
     }
 }

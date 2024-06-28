@@ -19,8 +19,8 @@ class DishController extends Controller
     {
         $user = Auth::user();
         $restaurant = $user->restaurant;
-        $dishes = Dish::where('restaurant_id',$restaurant->id)->get();
-        
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+
         return view('admin.dishes.index', compact('dishes'));
     }
 
@@ -38,10 +38,11 @@ class DishController extends Controller
     public function store(StoreDishRequest $request)
     {
         $form_data = $request->all();
-    
-       $user = Auth::user();
-       $restaurant = $user->restaurant;
-       
+
+
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+
         $base_slug = Str::slug($form_data['name']);
         $slug = $base_slug;
         $n = 0;
@@ -58,10 +59,10 @@ class DishController extends Controller
 
         $form_data['slug'] = $slug;
 
-    
-/* 
+
+        /* 
         $new_dish = Dish::create($form_data); */
-        $new_dish=new Dish($form_data);
+        $new_dish = new Dish($form_data);
 
         $new_dish->restaurant()->associate($restaurant);
         $new_dish->save();
