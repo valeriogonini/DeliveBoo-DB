@@ -18,43 +18,43 @@ class TypeSeeder extends Seeder
         $types = [
             [
                 'label'=>'italiano',
-                'image'=>'./img_icons/spaguetti.png'
+                'image'=>'../img_icons/spaguetti.png'
             ], 
             [
                 'label'=>'fast-food',
-                'image'=>'./img_icons/fast-food.png'
+                'image'=>'../img_icons/fast-food.png'
             ], 
             [
                 'label'=>'pesce',
-                'image'=>'./img_icons/fish-and-chips.png'
+                'image'=>'../img_icons/fish-and-chips.png'
             ], 
             [
                 'label'=>'carne',
-                'image'=>'./img_icons/meat.png'
+                'image'=>'../img_icons/meat.png'
             ], 
             [
                 'label'=>'vegetariano',
-                'image'=>'./img_icons/salad.png'
+                'image'=>'../img_icons/salad.png'
             ], 
             [
                 'label'=>'pizza',
-                'image'=>'./img_icons/pizza.png'
+                'image'=>'../img_icons/pizza.png'
             ], 
             [
                 'label'=>'messicano',
-                'image'=>'./img_icons/taco.png'
+                'image'=>'../img_icons/taco.png'
             ], 
             [
                 'label'=>'giapponese',
-                'image'=>'./img_icons/sushi.png'
+                'image'=>'../img_icons/sushi.png'
             ], 
             [
                 'label'=>'gluten free',
-                'image'=>'./img_icons/gluten-free.png'
+                'image'=>'../img_icons/gluten-free.png'
             ], 
             [
                 'label'=>'kebab',
-                'image'=>'./img_icons/kebab.png'
+                'image'=>'../img_icons/kebab.png'
             ], 
         
         

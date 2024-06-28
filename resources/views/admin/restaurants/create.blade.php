@@ -28,15 +28,18 @@
       {{old('p_iva')}}</input>
     </div>
     <div class="mb-3">inserisci la/e tipologia/e del tuo ristorante</div>
-    <div class="mb-5 d-flex align-items-center">
-      @foreach($types as $type)
-      <div class="form-check mx-2">
-      <input type="checkbox" name="types" class="form-check-input" value="{{$type->id}}"
-        id="{{$type->id}}">
-      <label for="{{$type->id}}">{{ $type->label }}</label>
-      </div>
-    @endforeach
-    </div>
+    <div class="d-flex gap-2">
+            @foreach ($types as $type)
+
+              <div class="form-check">
+                <input @checked( in_array($type->id, old('types',[])) ) name="types[]" class="form-check-input" type="checkbox" value="{{ $type->id }}" id="type-{{$type->id}}">
+                <label class="form-check-label" for="type-{{$type->id}}">
+                  {{ $type->label }}
+                </label>
+              </div>
+                
+            @endforeach
+          </div>
     {{-- <div class="mb-3">
       <label for="image" class="form-label">Inserisci l'immagine del tuo ristorante</label>
       <input class="form-control" type="file" id="image" name="image">

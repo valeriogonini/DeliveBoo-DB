@@ -8,6 +8,7 @@ use App\Models\Type;
 use illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRestaurantRequest;
 
 class RestaurantController extends Controller
 {
@@ -33,21 +34,10 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
 
-        $request->validate([
-            'name' => 'required|min:3|max:255',
-            'email' => 'required|max:255|unique:restaurants',
-            'p_iva' => 'required|max:11|unique:restaurants',
-            'address'=> 'required|max:255',
-            'image'=> 'nullable|max:255',
-            'types'=>'required'
-
-            
-            
-        ]);
-
+    
 
         $form_data = $request->all();
  
@@ -72,9 +62,11 @@ class RestaurantController extends Controller
         $new_restaurant = Restaurant::create($form_data);
 
         // controllo se c`è il parametro technologies
-        if ($request->has('restaurants')) {
+        if ($request->has('types')) {
             $new_restaurant->types()->attach($request->types);
         }
+
+       
 
         return to_route('admin.restaurants.index', $new_restaurant);
     } 
