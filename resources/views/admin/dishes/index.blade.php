@@ -3,26 +3,32 @@
 
 
 
-<h1>Index dishes</h1>
+@foreach ($dishes as $dish)
+    
+<p>{{$dish->name}}</p>
+<p></p>
+<p></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@endforeach
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
