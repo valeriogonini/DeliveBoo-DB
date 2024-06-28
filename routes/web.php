@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\RestaurantController;
 
+use App\Http\Controllers\Admin\DishController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,7 @@ Route::middleware(['auth', 'verified'])
         })->name('dashboard');
 
         Route::resource('restaurants', RestaurantController::class);
+        Route::resource('dishes', DishController::class);
     });
 
 Route::middleware('auth')->group(function () {
