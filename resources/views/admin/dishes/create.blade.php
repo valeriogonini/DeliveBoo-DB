@@ -29,8 +29,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label"><strong>price</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price') }}">
+            <label for="price" class="form-label">price</label>
+            <input type="number" name="price" class="form-control" id="price" placeholder="0.00" value="{{ old('price') }}" step="0.01" max="9999.99" min="0">
         </div>
 
         <!-- <div class="form-check form-switch">
@@ -54,8 +54,8 @@
 
 
         <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Back</a>
-            <button class="btn btn-primary">Create</button>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.show', $restaurant->id) }}">Indietro</a>
+            <button class="btn btn-primary">Crea</button>
         </div>
 
         @if ($errors->any())

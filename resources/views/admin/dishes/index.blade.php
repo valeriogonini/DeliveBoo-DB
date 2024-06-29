@@ -6,6 +6,7 @@
 @foreach ($dishes as $dish)
     
 <p>{{$dish->name}}</p>
+<p>{{$dish->price}}</p>
 
 @endforeach
 

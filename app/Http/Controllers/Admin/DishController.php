@@ -29,7 +29,12 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.dishes.create');
+
+        $user = auth()->user();
+
+        $restaurant = $user->restaurant;
+
+        return view('admin.dishes.create', compact('restaurant'));
     }
 
     /**
@@ -72,9 +77,11 @@ class DishController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dish $dish)
+    public function show($id)
     {
-        //
+
+        $dish = Dish::with('restaurant')->findOrFail($id);
+        return view('admin.dishes.show',compact ('dish'));
     }
 
     /**

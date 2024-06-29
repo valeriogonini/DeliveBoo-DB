@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card">
+<div class="container">
     <img src="" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{$restaurant->name}}</h5>
+    <div class="">
+        <h1 class="card-title">{{$restaurant->name}}</h1>
         <p>{{$restaurant->address}}</p>                       
     </div>
 
@@ -15,7 +15,7 @@
         @else
             <ul>
                 @foreach($restaurant->dishes as $dish)
-                    <li>
+                    <div class="card mb-2 p-3">
                         <p><strong>{{ $dish->name }}</strong></p>
                         <p>{{ $dish->description }}</p>
                         @if($dish->image)
@@ -23,11 +23,13 @@
                         @else
                             <p>Nessuna immagine</p>
                         @endif
-                    </li>
+                        <a class="btn btn-primary me-4" href="{{ route('admin.dishes.show', $dish) }}">dettagli piatto</a>
+                    </div>
                 @endforeach
             </ul>
         @endif
 
+        <a class="btn btn-primary me-4" href="{{ route('admin.restaurants.index') }}">Torna alla dashboard</a>
         <a class="btn btn-success" href="{{ url('admin/dishes/create') }}">Nuovo piatto</a>
     </div>
 </div>
