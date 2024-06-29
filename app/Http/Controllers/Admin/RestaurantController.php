@@ -17,8 +17,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
-        return view('admin.restaurants.index', compact('restaurants'));
+        // $restaurants = Restaurant::all();
+        $restaurants = Restaurant::where('user_id', Auth::id())->get();
+        return view('admin.dashboard', compact('restaurants'));
     }
 
     /**
@@ -74,9 +75,12 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant)
+    public function show($id)
     {
-        //
+        $restaurant = Restaurant::with('dishes')->findOrFail($id);
+
+        // dd($restaurant->dishes);
+        return view('admin.restaurants.show',compact ('restaurant'));
     }
 
     /**
