@@ -35,11 +35,18 @@
             <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price') }}">
         </div>
 
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="availability" id="available" value="1" checked>
+            <label class="form-check-label" for="available">
+                Disponibile
+            </label>
         </div>
-
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="availability" id="unAvailable" value="0">
+            <label class="form-check-label" for="available">
+                Non Disponibile
+            </label>
+        </div>
 
 
         <div class="d-flex justify-content-end">
