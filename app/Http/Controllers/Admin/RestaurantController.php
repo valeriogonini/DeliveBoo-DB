@@ -19,7 +19,7 @@ class RestaurantController extends Controller
     {
         // $restaurants = Restaurant::all();
         $restaurants = Restaurant::where('user_id', Auth::id())->get();
-        return view('admin.dashboard', compact('restaurants'));
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
