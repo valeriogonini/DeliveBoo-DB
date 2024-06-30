@@ -31,7 +31,7 @@
             @else
                 @foreach($restaurants as $restaurant)
                     <div class="card">
-                        <img src="" class="card-img-top" alt="...">
+                        <img src="{{$restaurant->image}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
                         <div class="card-body">
                             <h5 class="card-title">{{$restaurant->name}}</h5>
                             <p>{{$restaurant->address}}</p>
