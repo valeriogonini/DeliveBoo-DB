@@ -25,35 +25,47 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control" name="description" id="description" rows="3"
-                placeholder="Descrizione"> {{old('description')}}</textarea>
+            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Descrizione"> {{old('description')}}</textarea>
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label"><strong>price</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price') }}">
+            <label for="price" class="form-label">price</label>
+            <input type="number" name="price" class="form-control" id="price" placeholder="0.00" value="{{ old('price') }}" step="0.01" max="9999.99" min="0">
         </div>
 
-        <div class="form-check form-switch">
+        <!-- <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
             <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+        </div> -->
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="availability" id="available" value="1" checked>
+            <label class="form-check-label" for="available">
+                Disponibile
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="availability" id="unAvailable" value="0">
+            <label class="form-check-label" for="available">
+                Non Disponibile
+            </label>
         </div>
 
 
 
         <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Back</a>
-            <button class="btn btn-primary">Create</button>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.show', $restaurant->id) }}">Indietro</a>
+            <button class="btn btn-primary">Crea</button>
         </div>
 
         @if ($errors->any())
-            <div class="alert alert-danger mt-3">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
     </form>

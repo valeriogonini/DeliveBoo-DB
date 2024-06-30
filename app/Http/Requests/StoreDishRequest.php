@@ -24,13 +24,27 @@ class StoreDishRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'image'=> 'nullable|max:255',
-            'price'=>'required|numeric|between:0,9999.99',
-            'description'=>'nullable',
-            
-            
+            'image' => 'nullable|max:255',
+            'price' => 'required|numeric|between:0.01,9999.99',
+            'description' => 'nullable',
+            'availability' => 'required'
 
-            
+
+
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'price.required' => 'Il prezzo è obbligatorio.',
+            'price.numeric' => 'Inserire un numero.',
+            'price.min' => 'Il prezzo deve essere maggiore di 0.',
+            'price.max' => 'Il prezzo è troppo alto',
+
+            //nome
+            'name.required' => 'Il nome è obbligatorio',
         ];
     }
 }
