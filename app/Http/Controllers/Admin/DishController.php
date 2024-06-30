@@ -7,6 +7,7 @@ use App\Models\Dish;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDishRequest;
+use App\Http\Requests\UpdateDishRequest;
 use illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,7 +74,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
@@ -81,15 +82,33 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dish $dish)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        
+        $form_data = $request->all();
+        $base_slug = Str::slug($form_data['name']);
+        $slug = $base_slug;
+        $n = 0;
+
+        do {
+            $find = Dish::where('slug', $slug)->first();
+
+            if ($find !== null) {
+                $n++;
+                $slug = $base_slug . '-' . $n;
+            }
+        } while ($find !== null);
+        $form_data['slug'] = $slug;
+        $dish->update($form_data); 
+
+
+        return to_route('admin.dishes.show', $dish); 
     }
 
     /**
@@ -97,6 +116,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+
+        return to_route('admin.dishes.index');
     }
 }
