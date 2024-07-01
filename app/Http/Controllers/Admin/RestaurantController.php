@@ -29,7 +29,6 @@ class RestaurantController extends Controller
     {
         $types = Type::all();
         return view('admin.restaurants.create', compact('types'));
-
     }
 
     /**
@@ -38,55 +37,30 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $form_data = $request->all();
-        
-        // dd($form_data);
-        $form_data['user_id']= Auth::id();
+
+
+        $form_data['user_id'] = Auth::id();
         $base_slug = Str::slug($form_data['name']);
-        $slug = $base_slug;
-        $n = 0;
-
-        do {
-            // SELECT * FROM posts WHERE slug = ?
-            $find = Restaurant::where('slug', $slug)->first(); // null | Post
-
-            if ($find !== null) {
-                $n++;
-                $slug = $base_slug . '-' . $n;
-            }
-        } while ($find !== null);
-
-        $form_data['slug'] = $slug;
+        $form_data['slug'] = $this->generateUniqueSlug($form_data['name']);
 
         if ($request->hasFile('image')) {
-
-            //
             $image_path = $request->file('image')->store('uploads', 'public');
             $form_data['image'] = $image_path;
-
-            // dd($image_path);
         }
 
         $new_restaurant = Restaurant::create($form_data);
-
-        // controllo se c`è il parametro technologies
         if ($request->has('types')) {
             $new_restaurant->types()->attach($request->types);
         }
 
-       
-
         return to_route('admin.restaurants.index', $new_restaurant);
-    } 
-    
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $restaurant = Restaurant::with('dishes')->findOrFail($id);
+    }
 
-        // dd($restaurant->dishes);
-        return view('admin.restaurants.show',compact ('restaurant'));
+
+    public function show($slug)
+    {
+        $restaurant = Restaurant::with('dishes')->firstOrFail();
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -103,6 +77,20 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         //
+    }
+
+    private function generateUniqueSlug($name)
+    {
+        $base_slug = Str::slug($name);
+        $slug = $base_slug;
+        $n = 0;
+
+        while (Restaurant::where('slug', $slug)->exists()) {
+            $n++;
+            $slug = $base_slug . '-' . $n;
+        }
+
+        return $slug;
     }
 
     /**

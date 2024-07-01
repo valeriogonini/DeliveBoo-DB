@@ -17,7 +17,7 @@
             <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p>
             <p><strong>Email: </strong> {{$restaurant->email}}</p>
 
-            <a href="{{ route('admin.restaurants.show', $restaurant ) }}" class="btn btn-primary">Dettagli</a>
+            <a href="{{ route('admin.restaurants.show', $restaurant->slug ) }}" class="btn btn-primary">Dettagli</a>
         </div>
     </div>
     @endforeach
