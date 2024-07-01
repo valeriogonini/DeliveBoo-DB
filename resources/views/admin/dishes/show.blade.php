@@ -4,20 +4,20 @@
 @section('content')
 <div class="container pt-5">
     <div class="row">
-        <div class="col-3">
+        <div class="col-5">
             <div class="justify-content-center d-flex align-items-center">
 
                 @if (!$dish->image)
                     <img style="width:100%" src="../../img/notfound.png">
                 @else
-                    <img src="{{asset('storage/' . $dish->image)}}">
+                    <img style="width:100%" src="{{asset('storage/' . $dish->image)}}">
                 @endif
 
 
             </div>
         </div>
-        <div class="col-6">
-            <div class="my-0">
+        <div class="col-7">
+            <div class="my-0 ">
 
                 <div>
                     <p class="my-1"><strong>Nome:</strong> {{$dish->name}}</p>

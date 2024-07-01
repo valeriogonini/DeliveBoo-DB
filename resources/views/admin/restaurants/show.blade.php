@@ -19,7 +19,7 @@
                                
         </div>
     </div>
-    <div>
+    <div class="p-3">
         <a class="btn btn-secondary me-2" href="{{ route('admin.restaurants.index') }}">Indietro</a>
         <a class="btn btn-primary" href="{{ route('admin.dishes.index') }}">Menu</a>
     </div>
