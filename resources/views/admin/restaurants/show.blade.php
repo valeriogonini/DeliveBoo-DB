@@ -2,45 +2,27 @@
 
 @section('content')
 <div class="container">
-    <div class="mb-2 p-3" style="width:">
-        <img src="{{$restaurant->image}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
+    <div class="mb-2 p-3 d-flex justify-content-between" style="width:">
         <div class="card-body">
-            <h5 class="card-title">{{$restaurant->name}}</h5>
-            <p>{{$restaurant->address}}</p>                     
+            <img src="{{$restaurant->image}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
+            <h5 class="card-title"><strong>Nome del ristorante: </strong> {{$restaurant->name}}</h5>
+            <p><strong>Email: </strong> {{$restaurant->email}}</p>  
+            <p><strong>Partita IVA: </strong> {{$restaurant->p_iva}}</p> 
+            <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p> 
+            <p><strong>Tipologia: </strong></p> 
+            <ul>
+            @foreach($restaurant->types as $type)            
+                <li>{{$type->label}}</li>
+            @endforeach
+            </ul>
+            
+                               
+        </div>
+        <div>
+            <a class="btn btn-secondary me-2" href="{{ route('admin.restaurants.index') }}">Indietro</a>
+            <a class="btn btn-primary" href="{{ route('admin.dishes.index') }}">Menu</a>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col mt-4">
-            <h3>{{ __('Dishes') }}</h3>
-            <div class="row">
-                @if($restaurant->dishes->isEmpty())
-                    <p>No dishes available for this restaurant.</p>
-                @else
-                    @foreach($restaurant->dishes as $dish)
-                        <div class="col-3" >
-                            <div class="card mb-2 p-3" style="width: 300px; min-height:400px">
-                                @if($dish->image)
-                                    <img src="{{ $dish->image }}" alt="{{ $dish->name }}" class="card-img-top" style=" min-height: 200px;">
-                                @else
-                                    <p>Nessuna immagine</p>
-                                @endif
-                                <div class="card-body">
-                                    <p class="card-title"><strong>{{ $dish->name }}</strong></p>
-                                    <p class="card-text">{{ $dish->description }}</p>
-                                    <p>{{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
-                                    <p>€{{$dish->price}}</p>
-                                </div>
-                                <a class="btn btn-primary me-4" href="{{ route('admin.dishes.show', $dish) }}">dettagli piatto</a>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>            
-            <a class="btn btn-primary me-4" href="{{ route('admin.dashboard') }}">Indietro</a>
-            <a class="btn btn-success" href="{{ url('admin/dishes/create') }}">Nuovo piatto</a>
-        </div>
-    </div>
-</div>
+
 @endsection

@@ -22,7 +22,7 @@ class DishController extends Controller
         $restaurant = $user->restaurant;
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
 
-        return view('admin.dishes.index', compact('dishes'));
+        return view('admin.dishes.index', compact('dishes','restaurant'));
     }
 
     /**
@@ -65,6 +65,14 @@ class DishController extends Controller
 
         $form_data['slug'] = $slug;
 
+         if ($request->hasFile('image')) {
+
+            //
+            $image_path = $request->file('image')->store('uploads', 'public');
+            $form_data['image'] = $image_path;
+
+            // dd($image_path);
+        } 
 
         /* 
         $new_dish = Dish::create($form_data); */

@@ -22,7 +22,15 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|min:3|max:255',
+            'image' => 'nullable|max:255',
+            'price' => 'required|numeric|between:0.01,9999.99',
+            'description' => 'nullable',
+            'availability' => 'required'
+
+
+
+
         ];
     }
 }

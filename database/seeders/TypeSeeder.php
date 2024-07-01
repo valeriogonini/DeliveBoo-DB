@@ -17,43 +17,43 @@ class TypeSeeder extends Seeder
     {
         $types = [
             [
-                'label'=>'italiano',
+                'label'=>'Italiano',
                 'image'=>'../img_icons/spaguetti.png'
             ], 
             [
-                'label'=>'fast-food',
+                'label'=>'Fast-food',
                 'image'=>'../img_icons/fast-food.png'
             ], 
             [
-                'label'=>'pesce',
+                'label'=>'Pesce',
                 'image'=>'../img_icons/fish-and-chips.png'
             ], 
             [
-                'label'=>'carne',
+                'label'=>'Carne',
                 'image'=>'../img_icons/meat.png'
             ], 
             [
-                'label'=>'vegetariano',
+                'label'=>'Vegetariano',
                 'image'=>'../img_icons/salad.png'
             ], 
             [
-                'label'=>'pizza',
+                'label'=>'Pizza',
                 'image'=>'../img_icons/pizza.png'
             ], 
             [
-                'label'=>'messicano',
+                'label'=>'Messicano',
                 'image'=>'../img_icons/taco.png'
             ], 
             [
-                'label'=>'giapponese',
+                'label'=>'Giapponese',
                 'image'=>'../img_icons/sushi.png'
             ], 
             [
-                'label'=>'gluten free',
+                'label'=>'Gluten free',
                 'image'=>'../img_icons/gluten-free.png'
             ], 
             [
-                'label'=>'kebab',
+                'label'=>'Kebab',
                 'image'=>'../img_icons/kebab.png'
             ], 
         

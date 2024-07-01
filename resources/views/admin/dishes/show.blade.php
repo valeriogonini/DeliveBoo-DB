@@ -2,43 +2,55 @@
 @section('name', 'show')
 
 @section('content')
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-3">
+            <div class="justify-content-center d-flex align-items-center">
 
-<div class="card">
-    <div class="card-head justify-content-center">
+                @if (!$dish->image)
+                    <img style="width:100%" src="../../img/notfound.png">
+                @else
+                    <img src="{{$dish->image}}">
+                @endif
 
-        @if (!$dish->image)
-            <img src="../../img/notfound.png">
-        @else
-            <img src="{{$dish->image}}">
-        @endif
-    </div>
-    <div class="card-body">
-
-        <p><strong>Nome:</strong> <a href="">{{$dish->name}}</a></p>
-        <p><strong>Slug:</strong> {{$dish->slug}}</p>
-        <p><strong>Descrizione:</strong> {{$dish->description}}</p>
-        <p><strong>Prezzo:</strong> {{$dish->price}} €</p>
-        <p><strong>Disponibilità:</strong> {{$dish->availability}}</p>
-
-        <div class="d-flex justify-content-between">
-            <div>
-                <a class="btn btn-secondary" href="{{ route('admin.dishes.index') }}">Back</a>
-                <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-primary">Edit</a>
+               
             </div>
-            <div>
-                <form action="{{ route('admin.dishes.destroy', $dish)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger">Delete</button>
-                </form>
+        </div>
+        <div class="col-6">
+            <div class="my-0">
+
+                <div>
+                    <p class="my-1"><strong>Nome:</strong> {{$dish->name}}</p>
+                    <p class="my-1"><strong>Disponibilità:</strong> {{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
+                    <p class="my-1"><strong>Prezzo:</strong> {{$dish->price}} €</p>
+                </div>
+
+
             </div>
+        </div>
+        <div class="col-12">
+            <p class="pt-3 pe-5"><strong>Descrizione:</strong> {{$dish->description}}</p>
         </div>
 
     </div>
 
+
+    <div class="d-flex justify-content-between">
+        <div>
+            <a class="btn btn-secondary" href="{{ route('admin.dishes.index') }}">Indietro</a>
+            <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-primary">Modifica</a>
+        </div>
+        <div>
+            <form action="{{ route('admin.dishes.destroy', $dish)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">Elimina</button>
+            </form>
+        </div>
+    </div>
+
+
 </div>
-
-
 
 
 

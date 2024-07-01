@@ -37,11 +37,8 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-
-    
-
         $form_data = $request->all();
- 
+        
         // dd($form_data);
         $form_data['user_id']= Auth::id();
         $base_slug = Str::slug($form_data['name']);
@@ -59,6 +56,15 @@ class RestaurantController extends Controller
         } while ($find !== null);
 
         $form_data['slug'] = $slug;
+
+        if ($request->hasFile('image')) {
+
+            //
+            $image_path = $request->file('image')->store('uploads', 'public');
+            $form_data['image'] = $image_path;
+
+            // dd($image_path);
+        }
 
         $new_restaurant = Restaurant::create($form_data);
 

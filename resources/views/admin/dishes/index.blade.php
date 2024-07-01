@@ -2,42 +2,42 @@
 @section('content')
 
 
+
 <div class="container">
+<div class="d-flex justify-content-between pt-3">
+<a class="btn btn-secondary" href="{{ route('admin.restaurants.index') }}"><--</a>
+<a class="btn btn-primary" href="{{ route('admin.dishes.create') }}">Nuovo piatto</a>
+</div>
+
     <div class="row">
-
-        @foreach ($dishes as $dish)
-            <div class="col-4">
-                <a href="{{route('admin.dishes.show', $dish)}}">
-                    <div class="card">
-                        <div class="card-head justify-content-center">
-
-                            @if (!$dish->image)
+        <div class="col mt-4">
+            <h3>I miei piatti</h3>
+            <div class="row">
+                @if($restaurant->dishes->isEmpty())
+                    <p>Non ci sono piatti disponibili.</p>
+                @else
+                    @foreach($restaurant->dishes as $dish)
+                        <div class="col-4" >
+                            <div class="card mb-2 p-3" style=" height:550px">
+                                @if($dish->image)
+                                    <img src=" {{asset('storage/' . $dish->image)}} " alt="{{ $dish->name }}" class="card-img-top" style=" min-height: 200px;">
+                                @else
                                 <img style="width:100%" src="../img/notfound.png">
-                            @else
-                                <img src="{{$dish->image}}">
-                            @endif
+                                @endif
+                                <div class="card-body">
+                                    <p class="card-title"><strong>{{ $dish->name }}</strong></p>
+                                    <p class="card-text">{{ Str::limit($dish->description, 100) }}</p>
+                                    <p>{{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
+                                    <p>€ {{$dish->price}}</p>
+                                </div>
+                                <a class="btn btn-primary me-4" href="{{ route('admin.dishes.show', $dish) }}">Dettagli piatto</a>
+                            </div>
                         </div>
-                        <div class="card-body">
-
-                            <p><strong>Nome:</strong> {{$dish->name}}</p>
-                            <p><strong>Descrizione:</strong> {{$dish->description}}</p>
-                            <p><strong>Prezzo:</strong> {{$dish->price}} €</p>
-                            <p><strong>Disponibilità:</strong> @if ($dish->availability == 1)
-                                Disponibile
-                            @else
-                                Non Disponibile
-                            @endif
-                            </p>
-
-                        </div>
-
-
-                    </div>
-                </a>
-
-
-            </div>
-        @endforeach
+                    @endforeach
+                @endif
+            </div>            
+            
+        </div>
     </div>
 </div>
 
