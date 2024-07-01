@@ -22,10 +22,10 @@
         @if (old('image',$dish->image))
             <div class="mb-3">
                 <p>Immagine corrente:</p>
-                <img src="{{asset('storage/' . $dish->image)}}" alt="{{old('image',$dish->image)}}">
+                <img src="{{asset('storage/' . $dish->image)}}" style="width:400px; height: 400px;" alt="{{old('image',$dish->image)}}">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Cambia immagine</label>
+                <label for="image" class="form-label" >Cambia immagine</label>
                 <input class="form-control" type="file" id="image" name="image" value="{{old('image',$dish->image)}}">
             </div>
         @else
