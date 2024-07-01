@@ -22,7 +22,7 @@ class DishController extends Controller
         $restaurant = $user->restaurant;
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
 
-        return view('admin.dishes.index', compact('dishes','restaurant'));
+        return view('admin.dishes.index', compact('dishes', 'restaurant'));
     }
 
     /**
@@ -65,14 +65,14 @@ class DishController extends Controller
 
         $form_data['slug'] = $slug;
 
-         if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
             //
             $image_path = $request->file('image')->store('uploads', 'public');
             $form_data['image'] = $image_path;
 
             // dd($image_path);
-        } 
+        }
 
         /* 
         $new_dish = Dish::create($form_data); */
@@ -90,7 +90,7 @@ class DishController extends Controller
     {
 
         $dish = Dish::with('restaurant')->findOrFail($id);
-        return view('admin.dishes.show',compact ('dish'));
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
@@ -106,7 +106,7 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        
+
         $form_data = $request->all();
         $base_slug = Str::slug($form_data['name']);
         $slug = $base_slug;
@@ -121,10 +121,18 @@ class DishController extends Controller
             }
         } while ($find !== null);
         $form_data['slug'] = $slug;
-        $dish->update($form_data); 
+        if ($request->hasFile('image')) {
+
+            //
+            $image_path = $request->file('image')->store('uploads', 'public');
+            $form_data['image'] = $image_path;
+
+            // dd($image_path);
+        }
+        $dish->update($form_data);
 
 
-        return to_route('admin.dishes.show', $dish); 
+        return to_route('admin.dishes.show', $dish);
     }
 
     /**

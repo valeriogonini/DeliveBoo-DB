@@ -10,10 +10,10 @@
                 @if (!$dish->image)
                     <img style="width:100%" src="../../img/notfound.png">
                 @else
-                    <img src="{{$dish->image}}">
+                    <img src="{{asset('storage/' . $dish->image)}}">
                 @endif
 
-               
+
             </div>
         </div>
         <div class="col-6">
@@ -21,7 +21,8 @@
 
                 <div>
                     <p class="my-1"><strong>Nome:</strong> {{$dish->name}}</p>
-                    <p class="my-1"><strong>Disponibilità:</strong> {{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
+                    <p class="my-1"><strong>Disponibilità:</strong>
+                        {{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
                     <p class="my-1"><strong>Prezzo:</strong> {{$dish->price}} €</p>
                 </div>
 
@@ -41,11 +42,38 @@
             <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-primary">Modifica</a>
         </div>
         <div>
-            <form action="{{ route('admin.dishes.destroy', $dish)}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger">Elimina</button>
-            </form>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#exampleModal{{$dish->id}}">
+                Elimina
+            </button>
+
+            <div class="modal fade" id="exampleModal{{$dish->id}}" tabindex="-1"
+                aria-labelledby="exampleModalLabel{{$dish->id}}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel{{$dish->id}}">Attenzione</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Vuoi davvero eliminare {{ $dish->name }}?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+
+                            <form class="delete-dish" action="{{ route('admin.dishes.destroy', $dish) }}"
+                                method="POST">
+
+
+                                @method('DELETE')
+                                @csrf
+
+                                <button class="btn btn-danger">Elimina</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="mb-2 p-3 d-flex justify-content-between" style="width:">
         <div class="card-body">
-            <img src="{{$restaurant->image}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
+            <img src="{{asset('storage/' . $restaurant->image)}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
             <h5 class="card-title"><strong>Nome del ristorante: </strong> {{$restaurant->name}}</h5>
             <p><strong>Email: </strong> {{$restaurant->email}}</p>  
             <p><strong>Partita IVA: </strong> {{$restaurant->p_iva}}</p> 

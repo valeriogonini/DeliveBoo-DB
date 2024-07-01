@@ -4,14 +4,14 @@
 
 
 <div class="container">
-    <form action="{{ route('admin.dishes.update', $dish) }}" method="POST">
+    <form action="{{ route('admin.dishes.update', $dish) }}" method="POST" enctype="multipart/form-data">
         {{-- Cross Site Request Forgering --}}
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input class="form-control" name="name" id="name" rows="3" placeholder="name"> {{old('name')}}</input>
+            <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{old('name',$dish->name)}}"> </input>
         </div>
 
 
@@ -20,19 +20,19 @@
             <input class="form-control" type="file" id="image" name="image">
         </div> --}}
         <div class="mb-3">
-            <label for="image" class="form-label">Url image</label>
-            <input type="text" name="image" class="form-control" id="image" placeholder="http://...">
+            <label for="image" class="form-label">Immagine</label>
+            <input class="form-control" type="file" id="image" name="image" value="{{old('image',$dish->image)}}">
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
             <textarea class="form-control" name="description" id="description" rows="3"
-                placeholder="Descrizione"> {{old('description')}}</textarea>
+                placeholder="Descrizione"> {{old('description',$dish->description)}}</textarea>
         </div>
 
         <div class="mb-3">
             <label for="price" class="form-label"><strong>price</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price') }}">
+            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}">
         </div>
 
         <div class="form-check">
