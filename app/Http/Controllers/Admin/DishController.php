@@ -43,56 +43,36 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        $form_data = $request->all();
-
+        $form_data = $request->validated();
 
         $user = Auth::user();
         $restaurant = $user->restaurant;
 
-        $base_slug = Str::slug($form_data['name']);
-        $slug = $base_slug;
-        $n = 0;
-
-        do {
-            // SELECT * FROM posts WHERE slug = ?
-            $find = Dish::where('slug', $slug)->first(); // null | Post
-
-            if ($find !== null) {
-                $n++;
-                $slug = $base_slug . '-' . $n;
-            }
-        } while ($find !== null);
-
-        $form_data['slug'] = $slug;
+        // Modifica aggiunta: Generazione slug unico
+        $form_data['slug'] = $this->generateUniqueSlug($form_data['name']);
 
         if ($request->hasFile('image')) {
-
-            //
             $image_path = $request->file('image')->store('uploads', 'public');
             $form_data['image'] = $image_path;
-
-            // dd($image_path);
         }
 
-        /* 
-        $new_dish = Dish::create($form_data); */
         $new_dish = new Dish($form_data);
-
         $new_dish->restaurant()->associate($restaurant);
         $new_dish->save();
+
         return to_route('admin.dishes.index', $new_dish);
     }
+
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
-    {
+    public function show($slug)
 
-        $dish = Dish::with('restaurant')->findOrFail($id);
+    {
+        $dish = Dish::with('restaurant')->where('slug', $slug)->firstOrFail();
         return view('admin.dishes.show', compact('dish'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -106,34 +86,40 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+        $form_data = $request->validated();
 
-        $form_data = $request->all();
-        $base_slug = Str::slug($form_data['name']);
-        $slug = $base_slug;
-        $n = 0;
+        // Modifica aggiunta: Controllo per aggiornamento slug
+        if ($form_data['name'] !== $dish->name) {
+            $form_data['slug'] = $this->generateUniqueSlug($form_data['name']);
+        } else {
+            $form_data['slug'] = $dish->slug;
+        }
 
-        do {
-            $find = Dish::where('slug', $slug)->first();
-
-            if ($find !== null) {
-                $n++;
-                $slug = $base_slug . '-' . $n;
-            }
-        } while ($find !== null);
-        $form_data['slug'] = $slug;
         if ($request->hasFile('image')) {
-
-            //
             $image_path = $request->file('image')->store('uploads', 'public');
             $form_data['image'] = $image_path;
-
-            // dd($image_path);
         }
-        $dish->update($form_data);
 
+        $dish->update($form_data);
 
         return to_route('admin.dishes.show', $dish);
     }
+
+    // Modifica aggiunta: Metodo per generare slug unico
+    private function generateUniqueSlug($name)
+    {
+        $base_slug = Str::slug($name);
+        $slug = $base_slug;
+        $n = 0;
+
+        while (Dish::where('slug', $slug)->exists()) {
+            $n++;
+            $slug = $base_slug . '-' . $n;
+        }
+
+        return $slug;
+    }
+
 
     /**
      * Remove the specified resource from storage.

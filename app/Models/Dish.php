@@ -10,16 +10,23 @@ class Dish extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','slug', 'image', 'description', 'price', 'availability','restaurant_id'
+        'name', 'slug', 'image', 'description', 'price', 'availability', 'restaurant_id'
     ];
 
-    public function orders(){
+    public function orders()
+    {
 
         return $this->belongsToMany(Order::class);
     }
 
-    public function restaurant(){
+    public function restaurant()
+    {
 
         return $this->belongsTo(Restaurant::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

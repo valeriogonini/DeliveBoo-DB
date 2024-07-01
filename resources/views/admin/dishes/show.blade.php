@@ -8,9 +8,9 @@
             <div class="justify-content-center d-flex align-items-center">
 
                 @if (!$dish->image)
-                    <img style="width:100%" src="../../img/notfound.png">
+                <img style="width:100%" src="../../img/notfound.png">
                 @else
-                    <img src="{{asset('storage/' . $dish->image)}}">
+                <img src="{{asset('storage/' . $dish->image)}}">
                 @endif
 
 
@@ -22,7 +22,8 @@
                 <div>
                     <p class="my-1"><strong>Nome:</strong> {{$dish->name}}</p>
                     <p class="my-1"><strong>Disponibilità:</strong>
-                        {{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
+                        {{$dish->availability ? 'disponibile' : 'non disponibile'}}
+                    </p>
                     <p class="my-1"><strong>Prezzo:</strong> {{$dish->price}} €</p>
                 </div>
 
@@ -42,13 +43,11 @@
             <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-primary">Modifica</a>
         </div>
         <div>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                data-bs-target="#exampleModal{{$dish->id}}">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$dish->id}}">
                 Elimina
             </button>
 
-            <div class="modal fade" id="exampleModal{{$dish->id}}" tabindex="-1"
-                aria-labelledby="exampleModalLabel{{$dish->id}}" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{$dish->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$dish->id}}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -61,8 +60,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
 
-                            <form class="delete-dish" action="{{ route('admin.dishes.destroy', $dish) }}"
-                                method="POST">
+                            <form class="delete-dish" action="{{ route('admin.dishes.destroy', $dish->slug) }}" method="POST">
 
 
                                 @method('DELETE')

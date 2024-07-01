@@ -125,7 +125,7 @@ class DishSeeder extends Seeder
             $new_dishes->image = $dish['image'];
             $new_dishes->slug = Str::slug($dish['name']);
             $new_dishes->restaurant_id = $faker->randomElement($restaurants_ids);
-           
+
             $new_dishes->save();
         }
     }
