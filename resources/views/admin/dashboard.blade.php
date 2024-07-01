@@ -1,28 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+@foreach($restaurants as $restaurant)
 <div class="container">
-    
+    <h2 class="fs-4 text-secondary my-4">
+        {{ ('Dashboard') }}
+    </h2>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header"><strong>{{ $restaurant->name }}</strong></div>
 
-        <div class="container py-4">
-            <h1>Il mio ristorante</h1>
-        
-            @if($restaurants->isEmpty())
-                <p>Non hai ristoranti registrati.</p>
-                <a class="btn btn-primary" href="{{ url('admin/restaurants/create') }}">Aggiungi ristorante</a>
-            @else
-            @foreach($restaurants as $restaurant)
-            <div class="card mb-2 p-3" style="width:">
-                <img src="{{$restaurant->image}}" class="card-img-top" alt="{{ $restaurant->name }}" style=" max-height: 400px;">
-                <div class="card-body">
-                    <h5 class="card-title"><strong>Nome del ristorante: </strong>{{$restaurant->name}}</h5>
-                    <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p>
-                    <a href="{{ route('admin.restaurants.show', $restaurant ) }}" class="btn btn-primary">Menu</a>                      
+                <div class="card-body d-flex justify-content-between">
+                    <p>{{$restaurant->address}}</p>
+                    <a class="btn btn-primary me-4" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
                 </div>
             </div>
-        @endforeach
-            @endif
         </div>
     </div>
 </div>
+@endforeach
 @endsection

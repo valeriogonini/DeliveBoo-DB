@@ -15,7 +15,6 @@
                 <div class="card-body">
                     <h5 class="card-title"><strong>Nome del ristorante: </strong>{{$restaurant->name}}</h5>
                     <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p>
-                    <p><strong>Email: </strong> {{$restaurant->email}}</p>
 
                     <a href="{{ route('admin.restaurants.show', $restaurant ) }}" class="btn btn-primary">Dettagli</a>                      
                 </div>

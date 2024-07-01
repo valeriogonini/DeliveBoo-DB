@@ -20,9 +20,9 @@
                         <div class="col-4" >
                             <div class="card mb-2 p-3" style=" height:550px">
                                 @if($dish->image)
-                                    <img src=" {{asset('storage/' . $dish->image)}} " alt="{{ $dish->name }}" class="card-img-top" style=" min-height: 200px;">
+                                    <img src=" {{asset('storage/' . $dish->image)}} " alt="{{ $dish->name }}" class="card-img-top" style=" height: 250px;">
                                 @else
-                                <img style="width:100%" src="../img/notfound.png">
+                                <img style="width:100%; height: 250px;" src="../img/notfound.png" >
                                 @endif
                                 <div class="card-body">
                                     <p class="card-title"><strong>{{ $dish->name }}</strong></p>
