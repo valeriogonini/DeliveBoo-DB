@@ -19,10 +19,21 @@
             <label for="image" class="form-label">Inserisci l'immagine del tuo ristorante</label>
             <input class="form-control" type="file" id="image" name="image">
         </div> --}}
-        <div class="mb-3">
-            <label for="image" class="form-label">Immagine</label>
-            <input class="form-control" type="file" id="image" name="image" value="{{old('image',$dish->image)}}">
-        </div>
+        @if (old('image',$dish->image))
+            <div class="mb-3">
+                <p>Immagine corrente:</p>
+                <img src="{{asset('storage/' . $dish->image)}}" alt="{{old('image',$dish->image)}}">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Cambia immagine</label>
+                <input class="form-control" type="file" id="image" name="image" value="{{old('image',$dish->image)}}">
+            </div>
+        @else
+            <div class="mb-3">
+                <label for="image" class="form-label">Immagine</label>
+                <input class="form-control" type="file" id="image" name="image">
+            </div>
+        @endif
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
@@ -50,7 +61,7 @@
 
 
         <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Back</a>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Back</a>
             <button class="btn btn-primary">Edit</button>
         </div>
 

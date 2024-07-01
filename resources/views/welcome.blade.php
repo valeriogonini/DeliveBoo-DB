@@ -2,6 +2,6 @@
 @section('content')
 <div class="container mt-3">
 
-    <a class="btn btn-secondary" href="{{ route('admin.restaurants.index') }}">Il mio ristorante</a>
+    <h1 class="text-center"><strong>Benvenuto su Deliveboo</strong></h1>
 </div>
 @endsection
