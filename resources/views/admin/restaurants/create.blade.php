@@ -78,3 +78,76 @@
 </div>
 
 @endsection
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("createDishForm");
+        const nameField = document.getElementById("name");
+        const priceField = document.getElementById("price");
+
+
+
+        const nameError = document.getElementById("name-error");
+        const priceError = document.getElementById("price-error");
+
+
+
+        function validateField(field, errorElement, validationFn) {
+            field.addEventListener("input", function() {
+                const errorMessage = validationFn(field.value);
+                errorElement.innerText = errorMessage;
+                field.classList.toggle("is-invalid", errorMessage.length > 0);
+            });
+        }
+
+        function validateForm() {
+            let valid = true;
+
+            if (nameField.value.length < 3) {
+                nameError.innerText = "Il nome deve avere almeno 3 caratteri.";
+                nameField.classList.add("is-invalid");
+                valid = false;
+            } else {
+                nameError.innerText = "";
+                nameField.classList.remove("is-invalid");
+            }
+
+            if (priceField.value.length < 0, 4) {
+                priceError.innerText = "il prezzo è troppo basso";
+                priceField.classList.add("is-invalid");
+                valid = false;
+            }
+            if
+            else(priceField.value.length > 9999, 99) {
+                priceError.innerText = "il prezzo è troppo alto";
+                priceField.classList.add("is-invalid");
+                valid = false;
+            } else {
+                priceError.innerText = "";
+                priceField.classList.remove("is-invalid");
+            }
+
+
+
+
+            return valid;
+        }
+
+        validateField(nameField, nameError, value => value.length < 3 ?
+            "Il nome deve avere almeno 3 caratteri." : "");
+        validateField(priceField, priceError, value => value < 0, 5 ?
+            "il prezzo è troppo basso" : "");
+        validateField(priceField, priceError, value => value > 9999, 99 ?
+            "il prezzo è troppo alto" : "");
+
+        form.addEventListener("submit", function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Previene l'invio del form
+            }
+        });
+    });
+  
+
+   
+
+</script>

@@ -4,15 +4,16 @@
 
 
     <div class="container">
-        <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data" id="registrationForm">
+        <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data" id="createDishForm">
             {{-- Cross Site Request Forgering --}}
             @csrf
 
-            <div class="mb-3">
-                <label for="name" class="form-label" >Nome*</label>
-                <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{ old('name') }}"></input>
-                <span class="invalid-feedback" role="alert" id="name-error"></span>
 
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome*</label>
+                <input class="form-control" name="name" id="name" rows="3" placeholder="name"
+                    value="{{ old('name') }}">
+                <span class="invalid-feedback" role="alert" id="name-error">ciao</span>
             </div>
 
 
@@ -32,17 +33,17 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label" id="price">price*</label>
+                <label for="price" class="form-label">price*</label>
                 <input type="number" name="price" class="form-control" id="price" placeholder="0.00"
                     value="{{ old('price') }}" step="0.01" max="9999.99" min="0">
-                <span class="invalid-feedback" role="alert" id="price-error"></span>
+                <span class="invalid-feedback " role="alert" id="price-error">ciao</span>
 
             </div>
 
             <!-- <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                </div> -->
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                        </div> -->
 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="availability" id="available" value="1" checked>
@@ -85,7 +86,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById("registrationForm");
+        const form = document.getElementById("createDishForm");
         const nameField = document.getElementById("name");
         const priceField = document.getElementById("price");
 
@@ -116,13 +117,11 @@
                 nameField.classList.remove("is-invalid");
             }
 
-            if (priceField.value.length < 0, 4) {
+            if ( parseInt( priceField.value ) < 0) {
                 priceError.innerText = "il prezzo è troppo basso";
                 priceField.classList.add("is-invalid");
                 valid = false;
-            }
-            if
-            else(priceField.value.length > 9999, 99) {
+            } else if ( parseInt( priceField.value ) > 9999) {
                 priceError.innerText = "il prezzo è troppo alto";
                 priceField.classList.add("is-invalid");
                 valid = false;
@@ -130,18 +129,18 @@
                 priceError.innerText = "";
                 priceField.classList.remove("is-invalid");
             }
-
-
-
+            console.log( priceField.value );
+            console.log(nameField.value);
 
             return valid;
         }
+        
 
         validateField(nameField, nameError, value => value.length < 3 ?
             "Il nome deve avere almeno 3 caratteri." : "");
-            validateField(priceField, priceError, value => value < 0,5 ?
+        validateField(priceField, priceError, value => value < 0 ?
             "il prezzo è troppo basso" : "");
-            validateField(priceField, priceError, value => value > 9999,99 ?
+        validateField(priceField, priceError, value => value > 9999 ?
             "il prezzo è troppo alto" : "");
 
         form.addEventListener("submit", function(event) {
@@ -150,4 +149,79 @@
             }
         });
     });
+
+
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     const form = document.getElementById("createDishForm");
+    //     const nameField = document.getElementById("name");
+    //     const priceField = document.getElementById("price");
+
+    //     const nameError = document.getElementById("name-error");
+    //     const priceError = document.getElementById("price-error");
+
+    //     function validateField(field, errorElement, validationFn, errorMessage) {
+    //         field.addEventListener("input", function() {
+    //             const isValid = validationFn(field.value);
+    //             errorElement.innerText = isValid ? "" : errorMessage;
+    //             field.classList.toggle("is-invalid", !isValid);
+    //         });
+    //     }
+
+    //     function validateForm() {
+    //         let valid = true;
+
+    //         validateField(nameField, nameError, value => value.length >= 3, "Il nome deve avere almeno 3 caratteri.");
+    //         validateField(priceField, priceError, value => parseFloat(value) >= 0.01 && parseFloat(value) <= 9999.99, "Il prezzo deve essere compreso tra 0.01 e 9999.99.");
+
+    //         if (nameField.value.length < 3  !validateField(nameField, nameError)) {
+    //             nameError.innerText = "Il nome deve avere almeno 3 caratteri.";
+    //             nameField.classList.add("is-invalid");
+    //             valid = false;
+    //         } else {
+    //             nameError.innerText = "";
+    //             nameField.classList.remove("is-invalid");
+    //         }
+
+    //         const price = parseFloat(priceField.value);
+    //         if (isNaN(price)  price < 0.01 || price > 9999.99) {
+    //             priceError.innerText = "Il prezzo deve essere compreso tra 0.01 e 9999.99.";
+    //             priceField.classList.add("is-invalid");
+    //             valid = false;
+    //         } else {
+    //             priceError.innerText = "";
+    //             priceField.classList.remove("is-invalid");
+    //         }
+
+    //         return valid;
+    //     }
+
+    //     form.addEventListener("submit", function(event) {
+    //         if (!validateForm()) {
+    //             event.preventDefault(); // Previene l'invio del form se la validazione non è superata
+    //         }
+    //     });
+    // });
+
+    //  document.addEventListener("DOMContentLoaded", function() {
+    //         const form = document.getElementById("createDishForm");
+    //         form.addEventListener("submit", function(event) {
+    //             const name = document.getElementById("name").value;
+    //             const price = document.getElementById("price").value;
+    //             const errors = [];
+
+    //             if (name.lenght < 3) {
+    //                 errors.push("nome non valido");
+    //             }
+
+    //             if(price <= 0){
+    //                 errors.push("il prezzo non è valido");
+
+    //             }
+
+    //             if (errors.length > 0) {
+    //                 event.preventDefault(); // Previene l'invio del form
+    //                 alert(errors.join("\n"));
+    //             }
+    //         });
+    //     });
 </script>
