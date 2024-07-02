@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth', 'verified'])
+Route::middleware(['auth', 'verified', 'check.access'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
@@ -40,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

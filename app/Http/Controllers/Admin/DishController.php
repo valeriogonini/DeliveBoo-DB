@@ -12,7 +12,13 @@ use illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
+
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('check.access')->only(['show', 'edit', 'update', 'destroy']);
+    // }
     /**
      * Display a listing of the resource.
      */
