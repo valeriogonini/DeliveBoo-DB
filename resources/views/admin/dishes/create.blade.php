@@ -13,7 +13,7 @@
                 <label for="name" class="form-label">Nome*</label>
                 <input class="form-control" name="name" id="name" rows="3" placeholder="name"
                     value="{{ old('name') }}">
-                <span class="invalid-feedback" role="alert" id="name-error">ciao</span>
+                <span class="invalid-feedback" role="alert" id="name-error"></span>
             </div>
 
 
@@ -33,17 +33,17 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">price*</label>
+                <label for="price" class="form-label">Price*</label>
                 <input type="number" name="price" class="form-control" id="price" placeholder="0.00"
                     value="{{ old('price') }}" step="0.01" max="9999.99" min="0">
-                <span class="invalid-feedback " role="alert" id="price-error">ciao</span>
+                <span class="invalid-feedback " role="alert" id="price-error"></span>
 
             </div>
 
             <!-- <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        </div> -->
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="availability">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                            </div> -->
 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="availability" id="available" value="1" checked>
@@ -117,24 +117,30 @@
                 nameField.classList.remove("is-invalid");
             }
 
-            if ( parseInt( priceField.value ) < 0) {
+            if (parseInt(priceField.value) <= 0) {
                 priceError.innerText = "il prezzo è troppo basso";
                 priceField.classList.add("is-invalid");
                 valid = false;
-            } else if ( parseInt( priceField.value ) > 9999) {
+            } else if (parseInt(priceField.value) > 9999) {
                 priceError.innerText = "il prezzo è troppo alto";
+                priceField.classList.add("is-invalid");
+                valid = false;
+            } else if (typeof priceField.value !== number) {
+                priceError.innerText = "inserire un prezzo numerico";
                 priceField.classList.add("is-invalid");
                 valid = false;
             } else {
                 priceError.innerText = "";
                 priceField.classList.remove("is-invalid");
             }
-            console.log( priceField.value );
-            console.log(nameField.value);
+            console.log(parseInt(priceField.value));
+            console.log(typeof parseInt(priceField.value));
+
+
 
             return valid;
         }
-        
+
 
         validateField(nameField, nameError, value => value.length < 3 ?
             "Il nome deve avere almeno 3 caratteri." : "");

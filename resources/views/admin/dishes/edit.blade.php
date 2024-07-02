@@ -11,7 +11,9 @@
 
         <div class="mb-3">
             <label for="name" class="form-label"><strong>Nome*</strong></label>
-            <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{old('name',$dish->name)}}"> </input>
+            <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{old('name',$dish->name)}}">
+            <span class="invalid-feedback" role="alert" id="name-error">ciao</span>
+
         </div>
 
 
@@ -44,6 +46,8 @@
         <div class="mb-3">
             <label for="price" class="form-label"><strong>price*</strong></label>
             <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}">
+            <span class="invalid-feedback " role="alert" id="price-error">ciao</span>
+
         </div>
 
         <div class="form-check">
@@ -83,3 +87,70 @@
 </div>
 
 @endsection
+
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("createDishForm");
+        const nameField = document.getElementById("name");
+        const priceField = document.getElementById("price");
+
+
+
+        const nameError = document.getElementById("name-error");
+        const priceError = document.getElementById("price-error");
+
+
+
+        function validateField(field, errorElement, validationFn) {
+            field.addEventListener("input", function() {
+                const errorMessage = validationFn(field.value);
+                errorElement.innerText = errorMessage;
+                field.classList.toggle("is-invalid", errorMessage.length > 0);
+            });
+        }
+
+        function validateForm() {
+            let valid = true;
+
+            if (nameField.value.length < 3) {
+                nameError.innerText = "Il nome deve avere almeno 3 caratteri.";
+                nameField.classList.add("is-invalid");
+                valid = false;
+            } else {
+                nameError.innerText = "";
+                nameField.classList.remove("is-invalid");
+            }
+
+            if ( parseInt( priceField.value ) < 0) {
+                priceError.innerText = "il prezzo è troppo basso";
+                priceField.classList.add("is-invalid");
+                valid = false;
+            } else if ( parseInt( priceField.value ) > 9999) {
+                priceError.innerText = "il prezzo è troppo alto";
+                priceField.classList.add("is-invalid");
+                valid = false;
+            } else {
+                priceError.innerText = "";
+                priceField.classList.remove("is-invalid");
+            }
+            console.log( priceField.value );
+            console.log(nameField.value);
+
+            return valid;
+        }
+        
+
+        validateField(nameField, nameError, value => value.length < 3 ?
+            "Il nome deve avere almeno 3 caratteri." : "");
+        validateField(priceField, priceError, value => value < 0 ?
+            "il prezzo è troppo basso" : "");
+        validateField(priceField, priceError, value => value > 9999 ?
+            "il prezzo è troppo alto" : "");
+
+        form.addEventListener("submit", function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Previene l'invio del form
+            }
+        });
+    });
+</script>
