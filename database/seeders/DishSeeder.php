@@ -25,49 +25,49 @@ class DishSeeder extends Seeder
                 'description' => 'Pizza  con pomodori, mozzarella, basilico fresco, sale e olio extra vergine di oliva.',
                 'price' => 8.50,
                 'availability' => true,
-                'image' => 'img/pizza_margherita.jpg'
+                'image' => '\uploads\pizza_margherita.jpg'
             ],
             [
                 'name' => 'Insalata Caesar',
                 'description' => 'Lattuga fresca  romana con condimento Caesar, crostini e formaggio Parmigiano.',
                 'price' => 6.75,
                 'availability' => true,
-                'image' => 'img/insalata_caesar.jpg'
+                'image' => '\uploads\insalata_cesar.jpg'
             ],
             [
                 'name' => 'Spaghetti alla Carbonara',
                 'description' => "Spaghetti con salsa cremosa all'uovo, guanciale, formaggio pecorino e pepe nero.",
                 'price' => 10.00,
                 'availability' => false,
-                'image' => 'img/spaghetti_carbonara.jpg'
+                'image' => '\uploads\spaghetti_carbonare.jpg'
             ],
             [
                 'name' => 'Tiramisù',
                 'description' => 'Classico dessert italiano con strati di savoiardi imbevuti di caffè e crema al mascarpone.',
                 'price' => 5.50,
                 'availability' => true,
-                'image' => 'img/tiramisu.jpg'
+                'image' => '\uploads\tiramisu.jpg'
             ],
             [
                 'name' => 'Minestrone',
                 'description' => 'Zuppa italiana ricca di verdure, fagioli e pasta.',
                 'price' => 7.25,
                 'availability' => true,
-                'image' => 'img/minestrone.jpg'
+                'image' => '\uploads\minestrone.jpg'
             ],
             [
                 'name' => 'kebab classico',
                 'description' => 'Piadina arrotolata con lattuga, pomodoro, cipolla, patatine fritte, kebab, salsa piccante, salsa yogurt.',
                 'price' => 7.25,
                 'availability' => true,
-                'image' => 'img/minestrone.jpg'
+                'image' => '\uploads\kebab.jpg'
             ],
             [
                 'name' => 'Bistecca alla Fiorentina',
                 'description' => 'Deliziosa bistecca di manzo alla griglia, tipica della cucina toscana.',
                 'price' => 25.00,
                 'availability' => true,
-                'image' => 'img/bistecca_fiorentina.jpg'
+                'image' => '\uploads\Bistecca-Alla-Fiorentina.webp'
             ],
             // Categoria: Pesce
             [
@@ -75,7 +75,7 @@ class DishSeeder extends Seeder
                 'description' => 'Filetto di salmone cotto al forno con erbe aromatiche e limone.',
                 'price' => 18.50,
                 'availability' => true,
-                'image' => 'img/salmone_al_forno.jpg'
+                'image' => '\uploads\salmone.jpg'
             ],
             // Categoria: Giapponese
             [
@@ -83,7 +83,7 @@ class DishSeeder extends Seeder
                 'description' => 'Selezione di sushi con salmone, tonno, gamberi e avocado.',
                 'price' => 22.00,
                 'availability' => true,
-                'image' => 'img/sushi_misto.jpg'
+                'image' => '\uploads\sushi-misto.jpg'
             ],
             // Categoria: Gluten Free
             [
@@ -91,7 +91,7 @@ class DishSeeder extends Seeder
                 'description' => 'Insalata fresca con quinoa, verdure miste e dressing leggero senza glutine.',
                 'price' => 12.00,
                 'availability' => true,
-                'image' => 'img/insalata_quinoa.jpg'
+                'image' => '\uploads\insalata_quinoa.jpg'
             ],
             // Categoria: Messicano
             [
@@ -99,7 +99,7 @@ class DishSeeder extends Seeder
                 'description' => 'Tacos di pollo con salsa piccante, guacamole e coriandolo fresco.',
                 'price' => 9.50,
                 'availability' => true,
-                'image' => 'img/tacos_pollo.jpg'
+                'image' => '\uploads\tacos_di_pollo.jpg'
             ],
             // Categoria: Fast Food
             [
@@ -107,7 +107,56 @@ class DishSeeder extends Seeder
                 'description' => 'Classico cheeseburger con carne di manzo, formaggio cheddar, lattuga, pomodoro e cipolla.',
                 'price' => 7.50,
                 'availability' => true,
-                'image' => 'img/cheeseburger.jpg'
+                'image' => '\uploads\Cheeseburger.jpeg'
+            ],
+            [
+                'name' => 'Lasagne al forno',
+                'description' => 'Uno strato di pasta all’uovo intercalato con ragù di carne, besciamella e formaggio.',
+                'price' => 14.00,
+                'availability' => true,
+                'image' => '\uploads\lasagne.jpg'
+            ],
+            [
+                'name' => 'Tagliatelle ai funghi porcini',
+                'description' => 'Pasta fresca con funghi porcini, aglio, prezzemolo e olio d’oliva.',
+                'price' => 12.50,
+                'availability' => true,
+                'image' => '\uploads\tagliatelle_funghi.jpeg'
+            ],
+            [
+                'name' => 'Osso buco alla milanese',
+                'description' => 'Fettine di vitello brasate con pomodoro, vino bianco, sedano, carota e cipolla.',
+                'price' => 18.00,
+                'availability' => true,
+                'image' => '\uploads\osso-buco.jpeg'
+            ],
+            [
+                'name' => 'Risotto ai frutti di mare',
+                'description' => 'Risotto cremoso con gamberi, calamari, cozze e vongole.',
+                'price' => 16.00,
+                'availability' => true,
+                'image' => '\uploads\risotto-de-marisco-frutti-di-mare.jpeg'
+            ],
+            [
+                'name' => 'Insalata Caprese',
+                'description' => 'Insalata fresca con pomodori, mozzarella di bufala, basilico e olio d’oliva.',
+                'price' => 8.00,
+                'availability' => true,
+                'image' => '\uploads\caprese.jpg'
+            ],
+            [
+                'name' => 'Cotoletta alla milanese',
+                'description' => 'Fettina di carne impanata e fritta, tipica della cucina lombarda.',
+                'price' => 15.00,
+                'availability' => true,
+                'image' => '\uploads\cotoletta-milanese.jpeg'
+            ],
+            [
+                'name' => 'Panna cotta',
+                'description' => 'Dolce al cucchiaio con crema di latte, zucchero e vaniglia.',
+                'price' => 5.00,
+                'availability' => true,
+                'image' => '\uploads\panna-cotta.jpeg'
             ]
         ];
 
@@ -125,7 +174,7 @@ class DishSeeder extends Seeder
             $new_dishes->image = $dish['image'];
             $new_dishes->slug = Str::slug($dish['name']);
             $new_dishes->restaurant_id = $faker->randomElement($restaurants_ids);
-           
+
             $new_dishes->save();
         }
     }
