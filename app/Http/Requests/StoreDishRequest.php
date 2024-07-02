@@ -45,6 +45,8 @@ class StoreDishRequest extends FormRequest
 
             //nome
             'name.required' => 'Il nome è obbligatorio',
+            'name.min' => 'Il nome deve contenere almeno 3 caratteri',
+
         ];
     }
 }

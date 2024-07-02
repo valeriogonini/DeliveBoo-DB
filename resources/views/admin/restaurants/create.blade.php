@@ -10,26 +10,26 @@
     @csrf
 
     <div class="mb-3">
-      <label for="name" class="form-label">Nome </label>
+      <label for="name" class="form-label">Nome*</label>
       <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{old('name')}}"> </input>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Indirizzo Email</label>
+      <label for="email" class="form-label">Indirizzo Email*</label>
       <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
         placeholder="ristorante@..." value="{{old('email')}}"></input>
     </div>
     <div class="mb-3">
-      <label for="p_iva" class="form-label">Partita Iva </label>
+      <label for="p_iva" class="form-label">Partita Iva*</label>
       <input class="form-control" name="p_iva" id="p_iva" rows="3" placeholder="23457..." value="{{old('p_iva')}}">
       </input>
     </div>
     <div class="mb-3">
-      <label for="address" class="form-label">Indirizzo</label>
+      <label for="address" class="form-label">Indirizzo*</label>
       <input class="form-control" name="address" id="address" rows="3" placeholder="Via Roma ,15..."
         value="{{old('address')}}">
       </input>
     </div>
-    <div class="mb-3">Tipologia/e</div>
+    <div class="mb-3">Tipologia/e*</div>
     <div class="d-flex gap-2">
       @foreach ($types as $type)
 
@@ -58,6 +58,10 @@
     <div class="d-flex justify-content-end">
       <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Back</a>
       <button class="btn btn-primary">Create</button>
+    </div>
+
+    <div class="mb-3">
+      Campi obbligatori*
     </div>
 
     @if ($errors->any())
