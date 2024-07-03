@@ -29,7 +29,6 @@ class RestaurantController extends Controller
     {
         $types = Type::all();
         return view('admin.restaurants.create', compact('types'));
-
     }
 
     /**
@@ -38,9 +37,9 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $form_data = $request->all();
-        
+
         // dd($form_data);
-        $form_data['user_id']= Auth::id();
+        $form_data['user_id'] = Auth::id();
         $base_slug = Str::slug($form_data['name']);
         $slug = $base_slug;
         $n = 0;
@@ -73,11 +72,11 @@ class RestaurantController extends Controller
             $new_restaurant->types()->attach($request->types);
         }
 
-       
+
 
         return to_route('admin.restaurants.index', $new_restaurant);
-    } 
-    
+    }
+
     /**
      * Display the specified resource.
      */
@@ -85,8 +84,12 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::with('dishes')->findOrFail($id);
 
+        if ($restaurant->user->isNot(Auth::user())) {
+            abort(403);
+        }
+
         // dd($restaurant->dishes);
-        return view('admin.restaurants.show',compact ('restaurant'));
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
