@@ -24,6 +24,6 @@ class Dish extends Model
     public function restaurant()
     {
 
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(Restaurant::class)->withPivot('qty');
     }
 }

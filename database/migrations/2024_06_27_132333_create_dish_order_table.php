@@ -17,8 +17,10 @@ return new class extends Migration
 
             $table->unsignedBigInteger('dish_id');
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
-
+           
             $table->primary(['dish_id', 'order_id']);
+            $table->integer('quantity')->default(1);
+            
         });
     }
 
