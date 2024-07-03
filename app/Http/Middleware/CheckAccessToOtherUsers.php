@@ -12,24 +12,26 @@ class CheckAccessToOtherUsers
 {
     public function handle(Request $request, Closure $next)
     {
-        // Verifica se l'utente è autenticato
+
         if (auth()->check()) {
-            // Ottieni l'ID del piatto dalla richiesta
             $restaurantId = $request->route('restaurant');
             $dishId = $request->route('dish');
             $loggedInUserId = Auth::id();
-            // dd($restaurantId);
 
             if ($restaurantId) {
-                // Trova il piatto nel database
                 $restaurant = Restaurant::find($restaurantId);
 
-                if ($dishId) {
-                    $dish = Dish::find($dishId);
-                }
-
-                // Se il piatto non esiste o non appartiene all'utente autenticato
                 if (!$restaurant || $restaurant->user_id != $loggedInUserId) {
+                    abort(403, 'Accesso non consentito.');
+                }
+            }
+
+            if ($dishId) {
+                $user = Auth::user();
+                $userRestaurant = $user->restaurant;
+                $userRestaurantId = $userRestaurant->id;
+                $dish = Dish::find($dishId);
+                if (!$dish || $dish->restaurant_id != $userRestaurantId) {
                     abort(403, 'Accesso non consentito.');
                 }
             }

@@ -107,7 +107,7 @@ class DishSeeder extends Seeder
                 'description' => 'Classico cheeseburger con carne di manzo, formaggio cheddar, lattuga, pomodoro e cipolla.',
                 'price' => 7.50,
                 'availability' => true,
-                'image' => '\uploads\Cheeseburger.jpeg'
+                'image' => '\uploads\Cheeseburger.jpg'
             ],
             [
                 'name' => 'Lasagne al forno',
@@ -121,21 +121,21 @@ class DishSeeder extends Seeder
                 'description' => 'Pasta fresca con funghi porcini, aglio, prezzemolo e olio d’oliva.',
                 'price' => 12.50,
                 'availability' => true,
-                'image' => '\uploads\tagliatelle_funghi.jpeg'
+                'image' => '\uploads\tagliatelle_funghi.jpg'
             ],
             [
                 'name' => 'Osso buco alla milanese',
                 'description' => 'Fettine di vitello brasate con pomodoro, vino bianco, sedano, carota e cipolla.',
                 'price' => 18.00,
                 'availability' => true,
-                'image' => '\uploads\osso-buco.jpeg'
+                'image' => '\uploads\osso-buco.jpg'
             ],
             [
                 'name' => 'Risotto ai frutti di mare',
                 'description' => 'Risotto cremoso con gamberi, calamari, cozze e vongole.',
                 'price' => 16.00,
                 'availability' => true,
-                'image' => '\uploads\risotto-de-marisco-frutti-di-mare.jpeg'
+                'image' => '\uploads\risotto-de-marisco-frutti-di-mare.jpg'
             ],
             [
                 'name' => 'Insalata Caprese',
@@ -149,14 +149,14 @@ class DishSeeder extends Seeder
                 'description' => 'Fettina di carne impanata e fritta, tipica della cucina lombarda.',
                 'price' => 15.00,
                 'availability' => true,
-                'image' => '\uploads\cotoletta-milanese.jpeg'
+                'image' => '\uploads\cotoletta-milanese.jpg'
             ],
             [
                 'name' => 'Panna cotta',
                 'description' => 'Dolce al cucchiaio con crema di latte, zucchero e vaniglia.',
                 'price' => 5.00,
                 'availability' => true,
-                'image' => '\uploads\panna-cotta.jpeg'
+                'image' => '\uploads\panna-cotta.jpg'
             ]
         ];
 
