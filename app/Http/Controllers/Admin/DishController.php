@@ -104,6 +104,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+
         return view('admin.dishes.edit', compact('dish'));
     }
 
@@ -149,5 +150,6 @@ class DishController extends Controller
         $dish->delete();
 
         return to_route('admin.dishes.index');
+        
     }
 }
