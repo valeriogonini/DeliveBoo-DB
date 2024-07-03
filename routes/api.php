@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ImageDownloadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RestaurantController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\Api\TypeController;
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::get('/types', [TypeController::class, 'index']);
+Route::get('/download/{filename}', [ImageDownloadController::class, 'download'])->name('image.download');
 
 Route::get('/test', function () {
     return response()->json([
