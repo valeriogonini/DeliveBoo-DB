@@ -24,7 +24,7 @@
         @endforeach
     @else 
         <h3>Non hai nessun ristorante</h3>
-        <a class="btn btn-primary" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
+        <a class="btn btn-warning ms_btn" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
 @endsection
 

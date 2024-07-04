@@ -6,7 +6,7 @@
 
     @if($restaurants->isEmpty())
         <p>Non hai ristoranti registrati.</p>
-        <a class="btn btn-primary" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
+        <a class="btn btn-warning ms_new_btn" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
         
     @else
         @foreach($restaurants as $restaurant)
@@ -37,6 +37,10 @@
     }
 
     .ms_btn:hover{
+        color: white !important;
+    }
+
+    .ms_new_btn:hover{
         color: white !important;
     }
 </style>

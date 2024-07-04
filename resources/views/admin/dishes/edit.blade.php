@@ -3,7 +3,7 @@
 
 
 
-<div class="container">
+<div class="container mt-3">
     <form action="{{ route('admin.dishes.update', $dish) }}" method="POST" enctype="multipart/form-data">
         {{-- Cross Site Request Forgering --}}
         @csrf
@@ -23,7 +23,7 @@
         </div> --}}
         @if (old('image',$dish->image))
             <div class="mb-3">
-                <p>Immagine corrente:</p>
+                <p><strong>Immagine corrente:</strong></p>
                 <img src="{{asset('storage/' . $dish->image)}}" style="width:300px; " alt="{{old('image',$dish->image)}}">
             </div>
             <div class="mb-3">
@@ -44,8 +44,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label"><strong>price*</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}"  max="9999.99" min="1">
+            <label for="price" class="form-label"><strong>Prezzo*</strong></label>
+            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}" step="0.01" max="9999.99" min="1">
             <span class="invalid-feedback " role="alert" id="price-error"></span>
 
         </div>
@@ -65,8 +65,8 @@
 
 
         <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Back</a>
-            <button class="btn btn-primary">Edit</button>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Indietro</a>
+            <button class="btn btn-warning ms_btn">Modifica</button>
         </div>
 
         <div class="mt-3">
@@ -154,3 +154,9 @@
         });
     });
 </script>
+
+<style>
+    .ms_btn:hover{
+        color: white !important;
+    }
+</style>

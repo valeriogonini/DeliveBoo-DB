@@ -6,7 +6,7 @@
 <div class="container">
 <div class="d-flex justify-content-between pt-3">
 <a class="btn btn-secondary" href="{{ route('admin.restaurants.show', $restaurant) }}">&#x2190;</a>
-<a class="btn btn-primary" href="{{ route('admin.dishes.create') }}">Nuovo piatto</a>
+<a class="btn btn_salmon" href="{{ route('admin.dishes.create') }}">Nuovo piatto</a>
 </div>
 
     <div class="row">
@@ -30,7 +30,7 @@
                                     <p>{{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
                                     <p>€ {{$dish->price}}</p>
                                 </div>
-                                <a class="btn btn-primary me-4" href="{{ route('admin.dishes.show', $dish) }}">Dettagli piatto</a>
+                                <a class="btn btn-warning ms_btn me-4" href="{{ route('admin.dishes.show', $dish) }}">Dettagli piatto</a>
                             </div>
                         </div>
                     @endforeach
@@ -43,3 +43,18 @@
 
 
 @endsection
+
+<style>
+
+    .btn_salmon{
+        background-color: #FE8B79 !important;
+        color: white !important;
+    }
+
+    .btn_salmon:hover{
+        background-color: #fe4e33 !important;
+    }
+    .ms_btn:hover {
+        color: white !important;
+    }
+</style>
