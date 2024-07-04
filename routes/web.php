@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth', 'verified', 'check.access'])
+Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
