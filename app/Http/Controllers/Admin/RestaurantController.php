@@ -85,7 +85,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::with('dishes')->findOrFail($id);
 
         if ($restaurant->user->isNot(Auth::user())) {
-            abort(403);
+            return view('admin.abort');
         }
 
         // dd($restaurant->dishes);

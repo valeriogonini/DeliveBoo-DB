@@ -97,7 +97,7 @@ class DishController extends Controller
         $dish = Dish::with('restaurant')->findOrFail($id);
 
         if ($dish->restaurant->user->isNot(Auth::user())) {
-            abort(403);
+            return view('admin.abort');
         }
 
         return view('admin.dishes.show', compact('dish'));
@@ -113,7 +113,7 @@ class DishController extends Controller
         // }
 
         if ($dish->restaurant->user->isNot(Auth::user())) {
-            abort(403);
+            return view('admin.abort');
         }
 
 
@@ -165,7 +165,7 @@ class DishController extends Controller
         // }
 
         if ($dish->restaurant->user->isNot(Auth::user())) {
-            abort(403);
+            return view('admin.abort');
         }
         $dish->delete();
 
