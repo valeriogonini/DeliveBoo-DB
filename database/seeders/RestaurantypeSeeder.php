@@ -25,7 +25,7 @@ class RestaurantypeSeeder extends Seeder
        $restaurantH = Restaurant::where('name', 'Da Nicola')->first();
        $restaurantI = Restaurant::where('name', 'Konnichiwa')->first();
        $restaurantL = Restaurant::where('name', 'Kebab Campus')->first();
-       $restaurantM = Restaurant::where('name', 'Da Mauro')->first();
+       $restaurantM = Restaurant::where('name', 'Burger King')->first();
        // Recupera i tipi
        $italian = Type::where('label', 'Italiano')->first();
        $mexican = Type::where('label', 'Messicano')->first();

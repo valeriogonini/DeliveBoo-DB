@@ -45,10 +45,10 @@ class RestaurantSeeder extends Seeder
 
             ],
             [
-                'name' => 'Da Mauro',
-                'image' => '\uploads\063b4db13b83d5035dddc2dc24e49544.jpg',
-                'email' => 'Mauro@gmail.com',
-                'address' => 'via Mauro 69',
+                'name' => 'Burger King',
+                'image' => '\uploads\BK.jpg',
+                'email' => 'BK@gmail.com',
+                'address' => 'via BK 69',
                 'p_iva' => '1234578913',
 
             ],

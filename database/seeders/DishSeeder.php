@@ -151,13 +151,7 @@ class DishSeeder extends Seeder
                 'availability' => true,
                 'image' => '\uploads\cotoletta-milanese.jpg'
             ],
-            [
-                'name' => 'Panna cotta',
-                'description' => 'Dolce al cucchiaio con crema di latte, zucchero e vaniglia.',
-                'price' => 5.00,
-                'availability' => true,
-                'image' => '\uploads\panna-cotta.jpg'
-            ]
+
         ];
 
         $restaurants = Restaurant::all();
@@ -173,9 +167,67 @@ class DishSeeder extends Seeder
             $new_dishes->availability = $dish['availability'];
             $new_dishes->image = $dish['image'];
             $new_dishes->slug = Str::slug($dish['name']);
-            $new_dishes->restaurant_id = $faker->randomElement($restaurants_ids);
-            
+            switch ($new_dishes->name) {
+                case 'Pizza Margherita':
+                    $new_dishes->restaurant_id = 2;
+                    break;
+                case 'Insalata Caesar':
+                    $new_dishes->restaurant_id = 5;
+                    break;
+                case 'Spaghetti alla Carbonara':
+                    $new_dishes->restaurant_id = 1;
+                    break;
+                case 'Tiramisù':
+                    $new_dishes->restaurant_id = 1;
+                    break;
+                case 'Minestrone':
+                    $new_dishes->restaurant_id = 6;
+                    break;
+                case 'kebab classico':
+                    $new_dishes->restaurant_id = 11;
+                    break;
+                case 'Bistecca alla Fiorentina':
+                    $new_dishes->restaurant_id = 9;
+                    break;
+                case 'Salmone al Forno':
+                    $new_dishes->restaurant_id = 7;
+                    break;
+                case 'Sushi Misto':
+                    $new_dishes->restaurant_id = 10;
+                    break;
+                case 'Insalata di Quinoa':
+                    $new_dishes->restaurant_id = 6;
+                    break;
+                case 'Tacos di Pollo':
+                    $new_dishes->restaurant_id = 8;
+                    break;
+                case 'Cheeseburger':
+                    $new_dishes->restaurant_id = 4;
+                    break;
+                case 'Lasagne al forno':
+                    $new_dishes->restaurant_id = 3;
+                    break;
+                case 'Tagliatelle ai funghi porcini':
+                    $new_dishes->restaurant_id = 3;
+                    break;
+                case 'Osso buco alla milanese':
+                    $new_dishes->restaurant_id = 9;
+                    break;
+                case 'Risotto ai frutti di mare':
+                    $new_dishes->restaurant_id = 7;
+                    break;
+                case 'Insalata Caprese':
+                    $new_dishes->restaurant_id = 6;
+                    break;
+                case 'Cotoletta alla milanese':
+                    $new_dishes->restaurant_id = 5;
+                    break;
+
+            }
+
             $new_dishes->save();
         }
+
+       
     }
 }
