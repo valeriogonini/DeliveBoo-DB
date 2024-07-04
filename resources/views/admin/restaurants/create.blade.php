@@ -11,34 +11,34 @@
             @csrf
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nome*</label>
+                <label for="name" class="form-label">Nome<span class="required">*</span></label>
                 <input class="form-control" name="name" id="name" rows="3" placeholder="name"
                     value="{{ old('name') }}">
                 <span class="invalid-feedback" role="alert" id="name-error"></span>
 
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Indirizzo Email*</label>
+                <label for="email" class="form-label">Indirizzo Email<span class="required">*</span></label>
                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                     placeholder="ristorante@..." value="{{ old('email') }}">
                 <span class="invalid-feedback" role="alert" id="email-error"></span>
 
             </div>
             <div class="mb-3">
-                <label for="p_iva" class="form-label">Partita Iva*</label>
+                <label for="p_iva" class="form-label">Partita Iva<span class="required">*</span></label>
                 <input class="form-control" name="p_iva" id="p_iva" rows="3" placeholder="23457..."
                     value="{{ old('p_iva') }}">
                 <span class="invalid-feedback" role="alert" id="p_iva-error"></span>
 
             </div>
             <div class="mb-3">
-                <label for="address" class="form-label">Indirizzo*</label>
+                <label for="address" class="form-label">Indirizzo<span class="required">*</span></label>
                 <input class="form-control" name="address" id="address" rows="3" placeholder="Via Roma ,15..."
                     value="{{ old('address') }}">
                 <span class="invalid-feedback" role="alert" id="address-error"></span>
 
             </div>
-            <div class="mb-3">Tipologia/e*</div>
+            <div class="mb-3">Tipologia/e<span class="required">*</span></div>
             <div class="d-flex gap-2">
                 @foreach ($types as $type)
                     <div class="form-check">
@@ -68,11 +68,11 @@
 
 
             <div class="d-flex justify-content-end">
-                <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Back</a>
-                <button class="btn btn-primary">Create</button>
+                <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Indietro</a>
+                <button class="btn btn-warning">Crea Ristorante</button>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 required">
                 Campi obbligatori*
             </div>
 
@@ -188,3 +188,12 @@
         });
     });
 </script>
+
+<style>
+    .ms_btn:hover {
+        color: white !important;
+    }
+    .required {
+        color: red
+    }
+</style>

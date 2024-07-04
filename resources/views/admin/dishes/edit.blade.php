@@ -3,14 +3,14 @@
 
 
 
-<div class="container">
+<div class="container mt-3">
     <form action="{{ route('admin.dishes.update', $dish) }}" method="POST" enctype="multipart/form-data">
         {{-- Cross Site Request Forgering --}}
         @csrf
         @method('PUT')
 
         <div class="mb-3">
-            <label for="name" class="form-label"><strong>Nome*</strong></label>
+            <label for="name" class="form-label">Nome<span class="required">*</span></label>
             <input class="form-control" name="name" id="name" rows="3" placeholder="name" value="{{old('name',$dish->name)}}">
             <span class="invalid-feedback" role="alert" id="name-error">ciao</span>
 
@@ -27,25 +27,25 @@
                 <img src="{{asset('storage/' . $dish->image)}}" style="width:300px; " alt="{{old('image',$dish->image)}}">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label" ><strong>Cambia immagine</strong></label>
+                <label for="image" class="form-label" >Cambia immagine</label>
                 <input class="form-control" type="file" id="image" name="image" value="{{old('image',$dish->image)}}">
             </div>
         @else
             <div class="mb-3">
-                <label for="image" class="form-label"><strong>Immagine</strong></label>
+                <label for="image" class="form-label">Immagine</label>
                 <input class="form-control" type="file" id="image" name="image">
             </div>
         @endif
 
         <div class="mb-3">
-            <label for="description" class="form-label"><strong>Descrizione</strong></label>
+            <label for="description" class="form-label">Descrizione</label>
             <textarea class="form-control" name="description" id="description" rows="3"
                 placeholder="Descrizione"> {{old('description',$dish->description)}}</textarea>
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label"><strong>price*</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}"  max="9999.99" min="1">
+            <label for="price" class="form-label">Prezzo<span class="required">*</span></label>
+            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}" step="0.01" max="9999.99" min="1">
             <span class="invalid-feedback " role="alert" id="price-error"></span>
 
         </div>
@@ -65,12 +65,12 @@
 
 
         <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Back</a>
-            <button class="btn btn-primary">Edit</button>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Indietro</a>
+            <button class="btn btn-warning ms_btn">Modifica</button>
         </div>
 
-        <div class="mt-3">
-            <strong>Campi obbligatori*</strong>
+        <div class="mt-3 required">
+            Campi obbligatori*
         </div>
 
         @if ($errors->any())
@@ -154,3 +154,13 @@
         });
     });
 </script>
+
+<style>
+    .ms_btn:hover{
+        color: white !important;
+    }
+
+    .required {
+        color: red
+    }
+</style>

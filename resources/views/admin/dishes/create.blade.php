@@ -3,14 +3,14 @@
 
 
 
-    <div class="container">
+    <div class="container mt-3">
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data" id="createDishForm">
             {{-- Cross Site Request Forgering --}}
             @csrf
 
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nome*</label>
+                <label for="name" class="form-label">Nome<span class="required">*</span></label>
                 <input class="form-control" name="name" id="name" rows="3" placeholder="name"
                     value="{{ old('name') }}">
                 <span class="invalid-feedback" role="alert" id="name-error"></span>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Price*</label>
+                <label for="price" class="form-label">Prezzo<span class="required">*</span></label>
                 <input type="number" name="price" class="form-control" id="price" placeholder="0.00"
                     value="{{ old('price') }}" step="0.01" max="9999.99" min="1">
                 <span class="invalid-feedback " role="alert" id="price-error"></span>
@@ -61,11 +61,11 @@
 
 
             <div class="d-flex justify-content-end">
-                <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.show', $restaurant->id) }}">Indietro</a>
-                <button class="btn btn-primary">Crea</button>
+                <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.index') }}">Indietro</a>
+                <button class="btn btn-warning ms_btn">Crea</button>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-3 required">
                 Campi obbligatori*
             </div>
 
@@ -231,3 +231,13 @@
     //         });
     //     });
 </script>
+
+<style>
+    .ms_btn:hover{
+        color: white !important;
+    }
+
+    .required {
+        color: red
+    }
+</style>

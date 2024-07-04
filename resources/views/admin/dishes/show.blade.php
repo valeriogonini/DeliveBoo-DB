@@ -3,43 +3,40 @@
 
 @section('content')
 <div class="container pt-5">
-    <div class="row">
-        <div class="col-5">
-            <div class="justify-content-center d-flex align-items-center">
-
-                @if (!$dish->image)
-                    <img style="width:100%" src="../../img/notfound.png">
-                @else
-                    <img style="width:100%" src="{{asset('storage/' . $dish->image)}}">
-                @endif
-
-
+    <div class="card">
+        <div class="row">
+            <div class="col-5">
+                <div class="justify-content-center d-flex align-items-center">
+    
+                    @if (!$dish->image)
+                        <img style="width:100%" src="../../img/notfound.png">
+                    @else
+                        <img style="width:100%" src="{{asset('storage/' . $dish->image)}}">
+                    @endif
+    
+    
+                </div>
             </div>
-        </div>
-        <div class="col-7">
-            <div class="my-0 ">
-
-                <div>
-                    <p class="my-1"><strong>Nome:</strong> {{$dish->name}}</p>
+            <div class="col-7">
+                <div class="card-body">
+                    <h5 class="my-1 card-title"><strong>Nome:</strong> {{$dish->name}}</h5>
                     <p class="my-1"><strong>Disponibilità:</strong>
                         {{$dish->availability ? 'disponibile' : 'non disponibile'}}</p>
                     <p class="my-1"><strong>Prezzo:</strong> {{$dish->price}} €</p>
+     
+                    <p class="pt-3 pe-5"><strong>Descrizione:</strong> {{$dish->description}}</p>
+    
                 </div>
-
-
             </div>
+    
         </div>
-        <div class="col-12">
-            <p class="pt-3 pe-5"><strong>Descrizione:</strong> {{$dish->description}}</p>
-        </div>
-
     </div>
 
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-3">
         <div>
             <a class="btn btn-secondary" href="{{ route('admin.dishes.index') }}">Indietro</a>
-            <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-primary">Modifica</a>
+            <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-warning ms_btn">Modifica</a>
         </div>
         <div>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -80,10 +77,10 @@
 
 </div>
 
-
-
-
-
-
-
 @endsection
+
+<style>
+    .ms_btn:hover{
+        color: white !important;
+    }
+</style>
