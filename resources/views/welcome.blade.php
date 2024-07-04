@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     <style>
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Nunito', sans-serif;
 	margin: 0;
 	padding: 0;
 }
@@ -104,7 +105,7 @@ a {
         </div>
     </main>
     <div class="footer">
-        <p>&copy; 2024 Nome del Sito. Tutti i diritti riservati.</p>
+        <p>&copy; 2024 Deliveboo. Tutti i diritti riservati.</p>
     </div>
     
 </body>
