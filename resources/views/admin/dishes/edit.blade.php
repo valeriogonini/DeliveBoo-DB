@@ -45,8 +45,8 @@
 
         <div class="mb-3">
             <label for="price" class="form-label"><strong>price*</strong></label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}">
-            <span class="invalid-feedback " role="alert" id="price-error">ciao</span>
+            <input type="number" name="price" class="form-control" id="price" placeholder="" value="{{ old('price',$dish->price) }}"  max="9999.99" min="1">
+            <span class="invalid-feedback " role="alert" id="price-error"></span>
 
         </div>
 
