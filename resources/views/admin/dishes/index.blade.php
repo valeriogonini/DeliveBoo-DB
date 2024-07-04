@@ -5,7 +5,7 @@
 
 <div class="container">
 <div class="d-flex justify-content-between pt-3">
-<a class="btn btn-secondary" href="{{ route('admin.restaurants.index') }}">&#x2190;</a>
+<a class="btn btn-secondary" href="{{ route('admin.restaurants.show', $restaurant) }}">&#x2190;</a>
 <a class="btn btn-primary" href="{{ route('admin.dishes.create') }}">Nuovo piatto</a>
 </div>
 

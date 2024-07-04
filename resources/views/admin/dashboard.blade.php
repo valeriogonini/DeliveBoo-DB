@@ -15,7 +15,7 @@
 
                             <div class="card-body d-flex justify-content-between">
                                 <p>{{$restaurant->address}}</p>
-                                <a class="btn btn-primary me-4" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
+                                <a class="btn btn-warning me-4 ms_btn" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
                             </div>
                         </div>
                     </div>
@@ -27,3 +27,9 @@
         <a class="btn btn-primary" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
 @endsection
+
+<style>
+    .ms_btn:hover {
+        color: white !important;
+    }
+</style>
