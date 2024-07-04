@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="price" class="form-label">Price*</label>
                 <input type="number" name="price" class="form-control" id="price" placeholder="0.00"
-                    value="{{ old('price') }}" step="0.01" max="9999.99" min="0">
+                    value="{{ old('price') }}" step="0.01" max="9999.99" min="1">
                 <span class="invalid-feedback " role="alert" id="price-error"></span>
 
             </div>
