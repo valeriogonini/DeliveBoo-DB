@@ -59,14 +59,29 @@ a {
     <div class="container-header">
         <div class="header">
             <h1>Benvenuto su Deliveboo admin!</h1>
+            @guest
             <h2 class="p-header">Sei un ristoratore?</h2>
             <p>Entra a far parte del team Deliveboo, dove sicurezza, bellezza e praticità sono messi in primo piano. Avrai tutto sotto controllo in un'unica app, sempre a portata di mano.</p>
+            @endguest
         </div>
         
     </div>
     <main>
         <div class="container">
-           <div class="row">
+           <div class="row ">
+
+            @auth
+                <div class="col justify-content-center " >
+                    <div class="d-flex justify-content-center">
+                        <h3>Accedi alla dashboard</h3>
+                    
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('admin.dashboard') }}" class="btn-cream">Dashboard</a>  
+                    </div>
+                </div>
+            @endauth
+            @guest
                 <div class="col-6 justify-content-center " >
                     <div class="d-flex justify-content-center">
                         <h3>Sei già nostro cliente?</h3>
@@ -82,9 +97,9 @@ a {
                     </div>
                     <div class="d-flex justify-content-center">
                            <a href="{{ route('register') }}" class="btn-cream">Registrati</a>
-                             
                     </div>
                 </div>
+            @endguest
            </div>
         </div>
     </main>

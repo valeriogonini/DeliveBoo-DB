@@ -45,7 +45,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
-                    <img src="../img/logo.png" alt="" width="100px">
+                    <img src="/img/logo.png" alt="" width="100px">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -64,7 +64,7 @@
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a href="{{route('admin.restaurants.index')}}" class="nav-link">{{__('Il mio ristorante')}}</a>
+                                <a href="{{route('admin.restaurants.index')}}" class="pulsanti nav-link">{{__('Il mio ristorante')}}</a>
                             </li>
                         @endauth
                     </ul>
