@@ -15,6 +15,14 @@ class RestaurantController extends Controller
         return response()->json([
             'restaurants' => $restaurants
         ]);
+
+    }
+
+    public function show(Restaurant $restaurant){
+        $restaurant->load('dishes');
+        return response()->json([
+            'restaurant' => $restaurant
+        ]);
     }
 
 }
