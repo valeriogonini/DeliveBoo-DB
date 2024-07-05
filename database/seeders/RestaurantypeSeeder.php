@@ -41,15 +41,15 @@ class RestaurantypeSeeder extends Seeder
        // Assegna i tipi ai ristoranti
        $restaurantA->types()->attach([$italian->id,$meat->id]);
        $restaurantB->types()->attach([$gluten->id,$italian->id,$pizza->id]);
-       $restaurantC->types()->attach([$fast_food->id]);
+       $restaurantC->types()->attach([$meat->id]);
        $restaurantD->types()->attach([$fish->id]);
        $restaurantE->types()->attach([$vegetarian->id]);
        $restaurantF->types()->attach([$pizza->id,$italian->id]);
        $restaurantG->types()->attach([$mexican->id,$meat->id]);
-       $restaurantH->types()->attach([$fast_food->id]);
+       $restaurantH->types()->attach([$gluten->id,$italian->id]);
        $restaurantI->types()->attach([$japanese->id,$fish->id]);
        $restaurantL->types()->attach([$kebab->id,$meat->id]);
-       $restaurantM->types()->attach([$meat->id]);
+       $restaurantM->types()->attach([$fast_food->id,$meat->id]);
    }
 
 
