@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Mail\OrderMailable;
 use Illuminate\Foundation\Http\FormRequest;
+use Psy\Readline\Hoa\Console;
 
 
 
@@ -71,7 +72,9 @@ class OrderController extends Controller
         if ($result->success) {
             $data = [
                 'success' => true,
-                'message' => 'Transazione eseguita con successo!'
+                'message' => 'Transazione eseguita con successo!',
+                
+                
             ];
 
 
@@ -86,7 +89,7 @@ class OrderController extends Controller
 
             foreach ($orderData as $dish) {
                 // You can use the attach method if you have defined a many-to-many relationship in your Order model.
-                $order->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
+                $order->dishes()->attach($dish['id'], ['qty' => $dish['qty']]);
             }
 
 
