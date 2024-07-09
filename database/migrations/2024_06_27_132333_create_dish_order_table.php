@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
            
             $table->primary(['dish_id', 'order_id']);
-            $table->integer('quantity')->default(1);
+            $table->integer('qty')->default(1);
             
         });
     }
