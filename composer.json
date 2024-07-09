@@ -2,15 +2,14 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
-<<<<<<< HEAD
-        "braintree/braintree_php": "*",
-=======
         "braintree/braintree_php": "^6.18",
->>>>>>> b60a28a05480e28bd1f954a47bac2f74dece7040
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
