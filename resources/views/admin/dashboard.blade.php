@@ -53,6 +53,35 @@
     </table>
 
 </div>
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'goigno'],
+        datasets: [{
+          label: '# of Votes',
+          data: [{{$ciao}}, 30, 3, 10, 2, 3,],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
 @endsection
 
 <style>

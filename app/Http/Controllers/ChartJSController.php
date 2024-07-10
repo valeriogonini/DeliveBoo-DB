@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect,Response;
-Use DB;
+use Illuminate\Support\Facades\DB;
+
 use Carbon\Carbon;
 
 class ChartJSController extends Controller
@@ -32,6 +33,7 @@ class ChartJSController extends Controller
       }
 
     $data['chart_data'] = json_encode($data);
+ 
     return view('chart-js', $data);
     }
 
