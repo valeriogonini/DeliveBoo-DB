@@ -20,12 +20,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
         @endforeach
     @else 
         <h3>Non hai nessun ristorante</h3>
         <a class="btn btn-warning ms_btn" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
+
+    <a class="btn btn-warning me-4 ms_btn mt-3" href="{{ route('admin.orders') }}">I miei ordini</a>
+</div>
+
+    <?php 
+        // dump($myOrder)
+    ?>
 @endsection
 
 <style>

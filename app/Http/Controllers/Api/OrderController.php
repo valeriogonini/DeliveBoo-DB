@@ -96,6 +96,7 @@ class OrderController extends Controller
 
 
             return response()->json($data, 200);
+            // return view('admin.dashboard', compact('order'));
         } else {
             $data = [
                 'success' => false,
@@ -106,6 +107,24 @@ class OrderController extends Controller
         }
 
 
+    }
+
+    public function fetchOrders() {
+
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+
+        // recupero id dei piatti
+        $dishIds = Dish::where('restaurant_id', $restaurant->id)->pluck('id');
+
+        //recupero gli ordini legati al mio ristorante, tramite relazioni
+        $myOrders = Order::whereHas('dishes', function($query) use ($dishIds) {
+            $query->whereIn('dishes.id', $dishIds);
+        })->get();
+
+        
+
+        return view('admin.orders', compact('myOrders'));
     }
 
 

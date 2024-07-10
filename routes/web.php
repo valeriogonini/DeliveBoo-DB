@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DishController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Api\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/orders', [OrderController::class, 'fetchOrders'])->name('orders');
 
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('dishes', DishController::class);
