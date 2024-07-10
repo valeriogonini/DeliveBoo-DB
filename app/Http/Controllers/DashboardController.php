@@ -29,7 +29,7 @@ class DashboardController extends Controller
         })->orderBy('created_at', 'desc')->get();
 
         $totalOrders = Order::all();
-        
+
         // $totalgenuary = Order::where($totalOrders, '%-01-%')->get();
 
         // $orders = Order::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month')
@@ -41,7 +41,7 @@ class DashboardController extends Controller
         //        foreach($orders as $order){
         //         dd($order);
         //        };
-        
+
         // $august = 8;
         // $ordine = Order::query()->whereMonth('created_at', $august)->get();
         // dd($ordine);
@@ -49,24 +49,23 @@ class DashboardController extends Controller
         $orders = Order::all();
 
         // Raggruppa gli ordini per mese
-        $groupedOrders = $orders->groupBy(function($order) {
+        $groupedOrders = $orders->groupBy(function ($order) {
             return Carbon::parse($order->created_at)->format('Y-m');
         });
 
         // Prepara i dati per Chart.js
         $labels = $groupedOrders->keys();
-        $data = $groupedOrders->map(function($orders, $key) {
+        $data = $groupedOrders->map(function ($orders, $key) {
             return $orders->count();
         });
 
-        // dd($groupedOrders);
+        dd($groupedOrders);
+
+       
+        // foreach($groupedOrders[1] as $gennaio) {
+        //     dd($gennaio);
+        // }
         
-
-       
-       
-       
-
         return view('admin.dashboard', compact('restaurants', 'myOrders'));
     }
-   
 }

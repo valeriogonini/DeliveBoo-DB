@@ -68,7 +68,7 @@
         labels: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'goigno'],
         datasets: [{
           label: '# of Votes',
-          data: [{{$ciao}}, 30, 3, 10, 2, 3,],
+          data: [, 30, 3, 10, 2, 3,],
           borderWidth: 1
         }]
       },
