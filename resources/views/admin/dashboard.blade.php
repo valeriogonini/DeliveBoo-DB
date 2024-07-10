@@ -2,20 +2,20 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
+    <h3 class="my-4 m-0">
         Dashboard
-    </h2>
+    </h3>
 
     @if (!$restaurants->isEmpty())
     @foreach($restaurants as $restaurant)
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
-                <div class="card-header"><strong>{{ $restaurant->name }}</strong></div>
+                <div class="card-header card-bg"><strong>{{ $restaurant->name }}</strong></div>
 
                 <div class="card-body d-flex justify-content-between">
                     <p>{{ $restaurant->address }}</p>
-                    <a class="btn btn-warning me-4 ms_btn" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
+                    <a class="btn me-4 ms_btn btn-bg" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
                 </div>
             </div>
         </div>
@@ -23,11 +23,11 @@
     @endforeach
     @else
     <h3>Non hai nessun ristorante</h3>
-    <a class="btn btn-warning ms_btn" href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
+    <a class="btn btn-warning ms_btn " href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
 
-    <h1>I miei ordini</h1>
-    <table class="table custom-table">
+    <h3 class="m-0 mt-3">Ordini ricevuti</h3>
+    <table class="table custom-table mb-5">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -79,10 +79,10 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Total Prices per Month',
+                    label: 'Totale per ogni mese',
                     data: data,
-                    backgroundColor: '#1D7A46',
-                    borderColor: '#2E8B57',
+                    backgroundColor: '#FE8B79',
+                    borderColor: '#FE8B79',
                     borderWidth: 1
                 }]
             },
@@ -103,7 +103,7 @@
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Total Price',
+                            text: 'Totale Mensile',
                             color: '#333',
                             font: {
                                 size: 18,
@@ -114,7 +114,7 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Month',
+                            text: 'Mese',
                             color: '#333',
                             font: {
                                 size: 18,
@@ -129,8 +129,16 @@
 </script>
 
 <style>
+    .btn-bg{
+        background-color: #FAAF4D;
+      
+}
+    .card-bg{
+        background-color: #F4EFE7;
+    }
     .ms_btn:hover {
-        color: white !important;
+        background-color: #FAAF4D;
+        color: black !important;
     }
 
     .container {
@@ -154,8 +162,7 @@
     }
 
     .custom-table thead th {
-        background-color: #FAAF4D;
-        color: white;
+        background-color: #F4EFE7;
     }
 
     .custom-table tbody tr:nth-of-type(even) {

@@ -72,7 +72,7 @@ class DashboardController extends Controller
             ];
         }
 
-        // Codifica l'array in JSON
+       
         $jsonMonthlyTotalPrices = $monthlyTotalPrices;
 
 
