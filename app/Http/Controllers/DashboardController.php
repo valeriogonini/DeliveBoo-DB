@@ -59,11 +59,27 @@ class DashboardController extends Controller
             return $orders->count();
         });
 
-        dd($groupedOrders);
 
-       
-     
-        
+        // Array per contenere i dati da codificare in JSON
+        $monthlyTotalPrices = [];
+
+        // Calcola la somma totale dei prezzi per ogni mese
+        foreach ($groupedOrders as $month => $orders) {
+            $totalPrice = $orders->sum('total_price');
+            $monthlyTotalPrices[] = [
+                'month' => $month,
+                'total_price' => $totalPrice,
+            ];
+        }
+
+        // Codifica l'array in JSON
+        $jsonMonthlyTotalPrices = json_encode($monthlyTotalPrices);
+
+        dd($jsonMonthlyTotalPrices);
+
+
+
+
         return view('admin.dashboard', compact('restaurants', 'myOrders'));
     }
 }
