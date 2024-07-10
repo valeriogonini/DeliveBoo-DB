@@ -62,9 +62,7 @@ class DashboardController extends Controller
         dd($groupedOrders);
 
        
-        // foreach($groupedOrders[1] as $gennaio) {
-        //     dd($gennaio);
-        // }
+     
         
         return view('admin.dashboard', compact('restaurants', 'myOrders'));
     }
