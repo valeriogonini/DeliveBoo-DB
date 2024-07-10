@@ -73,13 +73,13 @@ class DashboardController extends Controller
         }
 
         // Codifica l'array in JSON
-        $jsonMonthlyTotalPrices = json_encode($monthlyTotalPrices);
-
-        dd($jsonMonthlyTotalPrices);
+        $jsonMonthlyTotalPrices = $monthlyTotalPrices;
 
 
 
 
-        return view('admin.dashboard', compact('restaurants', 'myOrders'));
+
+
+        return view('admin.dashboard', compact('restaurants', 'myOrders', 'jsonMonthlyTotalPrices'));
     }
 }
