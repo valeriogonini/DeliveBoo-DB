@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RestaurantController;
-
+use App\Http\Controllers\ChartJSController;
 use App\Http\Controllers\Admin\DishController;
 
 use App\Http\Controllers\ProfileController;
@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('dishes', DishController::class);
     });
 
+Route::get('chart-js', [ChartJSController::class, 'index']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
