@@ -7,50 +7,53 @@
     </h3>
 
     @if (!$restaurants->isEmpty())
-    @foreach($restaurants as $restaurant)
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header card-bg"><strong>{{ $restaurant->name }}</strong></div>
+        @foreach($restaurants as $restaurant)
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header card-bg"><strong>{{ $restaurant->name }}</strong></div>
 
-                <div class="card-body d-flex justify-content-between">
-                    <p>{{ $restaurant->address }}</p>
-                    <a class="btn me-4 ms_btn btn-bg" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
+                        <div class="card-body d-flex justify-content-between">
+                            <p>{{ $restaurant->address }}</p>
+                            <a class="btn me-4 ms_btn btn-bg"
+                                href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
     @else
-    <h3>Non hai nessun ristorante</h3>
-    <a class="btn btn-warning ms_btn " href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
+        <h3>Non hai nessun ristorante</h3>
+        <a class="btn btn-warning ms_btn " href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
 
-    <h3 class="m-0 mt-3">Ordini ricevuti</h3>
-    <table class="table custom-table mb-5">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome Cliente</th>
-                <th scope="col">Numero di telefono</th>
-                <th scope="col">Email</th>
-                <th scope="col">Indirizzo</th>
-                <th scope="col">Totale Ordine</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($myOrders as $order)
-            <tr>
-                <th>{{ $order->id }}</th>
-                <td>{{ $order->customer_name }}</td>
-                <td>{{ $order->phone_number }}</td>
-                <td>{{ $order->email }}</td>
-                <td>{{ $order->address }}</td>
-                <td>{{ $order->total_price }} €</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    @if (isset($myOrders))
+        <h3 class="m-0 mt-3">Ordini ricevuti</h3>
+        <table class="table custom-table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome Cliente</th>
+                    <th scope="col">Numero di telefono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Indirizzo</th>
+                    <th scope="col">Totale Ordine</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($myOrders as $order)
+                    <tr>
+                        <th>{{ $order->id }}</th>
+                        <td>{{ $order->customer_name }}</td>
+                        <td>{{ $order->phone_number }}</td>
+                        <td>{{ $order->email }}</td>
+                        <td>{{ $order->address }}</td>
+                        <td>{{ $order->total_price }} €</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
 
     <canvas id="bar-chart" width="800" height="400"></canvas>
 </div>
@@ -58,84 +61,92 @@
 
 
 
+
 <script>
-    $(function() {
+    if (typeof $jsonMonthlyTotalPricesv !== undefined) {
+        $(function () {
 
 
-        var jsonData = @json($jsonMonthlyTotalPrices);
-        console.log(jsonData);
-        var labels = [];
-        var data = [];
+            var jsonData = {!! isset($jsonMonthlyTotalPrices) ? json_encode($jsonMonthlyTotalPrices) : '{}' !!};
+            console.log('jsonData',jsonData);
+            const labels = [];
+            const data = [];
 
-        jsonData.forEach(function(item) {
-            labels.push(item.month);
-            data.push(item.total_price);
-        });
+            jsonData.forEach(function (item) {
+                labels.push(item.month);
+                data.push(item.total_price);
+            });
 
-        var ctx = document.getElementById('bar-chart').getContext('2d');
+            let ctx = document.getElementById('bar-chart').getContext('2d');
 
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Totale per ogni mese',
-                    data: data,
-                    backgroundColor: '#FE8B79',
-                    borderColor: '#FE8B79',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            fontColor: '#333',
-                            fontSize: 16
-                        }
-                    }
+            let chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Totale per ogni mese',
+                        data: data,
+                        backgroundColor: '#FE8B79',
+                        borderColor: '#FE8B79',
+                        borderWidth: 1
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
                             display: true,
-                            text: 'Totale Mensile',
-                            color: '#333',
-                            font: {
-                                size: 18,
-                                weight: 'bold'
+                            position: 'bottom',
+                            labels: {
+                                fontColor: '#333',
+                                fontSize: 16
                             }
                         }
                     },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Mese',
-                            color: '#333',
-                            font: {
-                                size: 18,
-                                weight: 'bold'
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Totale Mensile',
+                                color: '#333',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Mese',
+                                color: '#333',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                }
                             }
                         }
                     }
                 }
-            }
+            });
+
+
         });
-    });
+    }
+
 </script>
 
 <style>
-    .btn-bg{
+    .btn-bg {
         background-color: #FAAF4D;
-      
-}
-    .card-bg{
+
+    }
+
+    .card-bg {
         background-color: #F4EFE7;
     }
+
     .ms_btn:hover {
         background-color: #FAAF4D;
         color: black !important;

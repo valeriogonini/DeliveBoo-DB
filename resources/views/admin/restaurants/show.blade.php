@@ -4,18 +4,23 @@
 <div class="container pt-5">
     <div class="card restaurant_card">
         <div class="row" style="width:">
-            <div class="col-6"> 
-                <img src="{{asset('storage/' . $restaurant->image)}}" class="img-fluid" alt="{{ $restaurant->name }}" style="">
-    
+            <div class="col-6">
+                @if (!$restaurant->image)
+                    <img style="width:100%" src="../../img/notfound.png">
+                @else
+                    <img src="{{asset('storage/' . $restaurant->image)}}" class="card-img-top" alt="{{ $restaurant->name }}"
+                        style="">
+                @endif
+
             </div>
-    
+
             <div class="col-6">
                 <div class="card-body">
                     <h5 class="card-title my-3"><strong>Nome del ristorante: </strong> {{$restaurant->name}}</h5>
-                    <p><strong>Email: </strong> {{$restaurant->email}}</p>  
-                    <p><strong>Partita IVA: </strong> {{$restaurant->p_iva}}</p> 
-                    <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p> 
-                    <p><strong>Tipologia: </strong></p> 
+                    <p><strong>Email: </strong> {{$restaurant->email}}</p>
+                    <p><strong>Partita IVA: </strong> {{$restaurant->p_iva}}</p>
+                    <p><strong>Indirizzo: </strong> {{$restaurant->address}}</p>
+                    <p><strong>Tipologia: </strong></p>
                     <ul class="d-flex flex-wrap list-unstyled" style="width: 100%">
                         @foreach($restaurant->types as $type) 
                             <li style="width:50%">- {{$type->label}}</li>
@@ -23,8 +28,8 @@
                     </ul>
 
                 </div>
-                
-                                   
+
+
             </div>
         </div>
     </div>
@@ -37,7 +42,7 @@
 @endsection
 
 <style>
-    .restaurant_card{
+    .restaurant_card {
         box-shadow: 0 0 8px lightgrey;
     }
 
