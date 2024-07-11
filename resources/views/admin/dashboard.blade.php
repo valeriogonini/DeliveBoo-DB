@@ -152,10 +152,6 @@
         color: black !important;
     }
 
-    .container {
-        margin-top: 30px;
-    }
-
     .custom-table {
         width: 100%;
         margin-top: 20px;
