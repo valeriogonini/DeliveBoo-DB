@@ -50,7 +50,7 @@ class DashboardController extends Controller
 
         // Raggruppa gli ordini per mese
         $groupedOrders = $orders->groupBy(function ($order) {
-            return Carbon::parse($order->created_at)->format('Y-m');
+            return Carbon::parse($order->created_at)->format('M-Y');
         });
 
         // Prepara i dati per Chart.js
