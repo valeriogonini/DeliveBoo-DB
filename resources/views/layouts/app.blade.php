@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,23 +19,21 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
-<style>
+    <style>
+        .bg-orange {
+            background-color: #FAAF4D
+        }
 
-.bg-orange{
-    background-color: #FAAF4D
-}
-.pulsanti{
-    
-    color: white !important 
+        .pulsanti {
 
-   
-}
-.pulsanti:hover{
-    
-    color: #303030 !important;
-}
+            color: white !important
+        }
 
-</style>
+        .pulsanti:hover {
+
+            color: #303030 !important;
+        }
+    </style>
 
 </head>
 
@@ -45,7 +45,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
-                    <img src="/img/logo.png" alt="" width="100px">
+                        <img src="/img/logo.png" alt="" width="100px">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -63,9 +63,9 @@
                             <a class="pulsanti nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
                         @auth
-                            <li class="nav-item">
-                                <a href="{{route('admin.restaurants.index')}}" class="pulsanti nav-link">{{__('Il mio ristorante')}}</a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.restaurants.index')}}" class="pulsanti nav-link">{{__('Il mio ristorante')}}</a>
+                        </li>
                         @endauth
                     </ul>
 
@@ -73,36 +73,36 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link pulsanti" href="{{ route('login') }}">{{ __('Accedi') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link pulsanti" href="{{ route('register') }}">{{ __('Registrati') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link pulsanti" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link pulsanti" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class=" pulsanti nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class=" pulsanti nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                <a href="{{route('admin.restaurants.index')}}" class="dropdown-item">{{__('Il mio ristorante')}}</a>
+                                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profilo') }}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Esci') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-                                    <a href="{{route('admin.restaurants.index')}}" class="dropdown-item">{{__('Il mio ristorante')}}</a>
-                                    <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profilo') }}</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Esci') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
