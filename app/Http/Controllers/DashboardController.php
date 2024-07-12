@@ -29,7 +29,10 @@ class DashboardController extends Controller
 
             })->orderBy('created_at', 'desc')->get();
 
+            $myOrdersTable = Order::whereHas('dishes', function ($query) use ($dishIds) {
+                $query->whereIn('dishes.id', $dishIds);
 
+            })->orderBy('created_at', 'asc')->get();
 
 
 
@@ -54,7 +57,7 @@ class DashboardController extends Controller
             
 
             // Raggruppa gli ordini per mese
-            $groupedOrders = $myOrders->groupBy(function ($order) {
+            $groupedOrders = $myOrdersTable->groupBy(function ($order) {
                 return Carbon::parse($order->created_at)->format('M-Y');
             });
 
