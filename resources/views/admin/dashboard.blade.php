@@ -63,20 +63,29 @@
 
 
 <script>
-    if (typeof $jsonMonthlyTotalPricesv !== undefined) {
+    if (typeof $jsonMonthlyTotalPrices !== undefined) {
         $(function () {
 
 
             var jsonData = {!! isset($jsonMonthlyTotalPrices) ? json_encode($jsonMonthlyTotalPrices) : '{}' !!};
             console.log('jsonData', jsonData);
-            const labels = [/* 'Jen-2024''Feb-2024''Mar-2024''Apr-2024''May-2024''Jun-2024''Jul-2024''Aug-2024''Sep-2024''Oct-2024''Nov-2024''Dec-2024' */];
+        
+            const allMonths = ['Jan-2024', 'Feb-2024', 'Mar-2024', 'Apr-2024', 'May-2024', 'Jun-2024', 'Jul-2024', 'Aug-2024', 'Sep-2024', 'Oct-2024', 'Nov-2024', 'Dec-2024'];
+            const labels = [];
             const data = [];
 
-            jsonData.forEach(function (item) {
-
-                labels.push(item.month)
-                console.log(item.month);
-                data.push(item.total_price);
+            // Initialize labels and data arrays with all months
+            allMonths.forEach(function (month) {
+                labels.push(month);
+                // Check if there is data available for this month in jsonData
+                const found = jsonData.find(function (item) {
+                    return item.month === month;
+                });
+                if (found) {
+                    data.push(found.total_price);
+                } else {
+                    data.push(0); // If no data found, push 0
+                }
             });
 
             let ctx = document.getElementById('bar-chart').getContext('2d');
