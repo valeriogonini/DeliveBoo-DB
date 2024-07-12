@@ -68,12 +68,14 @@
 
 
             var jsonData = {!! isset($jsonMonthlyTotalPrices) ? json_encode($jsonMonthlyTotalPrices) : '{}' !!};
-            console.log('jsonData',jsonData);
-            const labels = [];
+            console.log('jsonData', jsonData);
+            const labels = [/* 'Jen-2024''Feb-2024''Mar-2024''Apr-2024''May-2024''Jun-2024''Jul-2024''Aug-2024''Sep-2024''Oct-2024''Nov-2024''Dec-2024' */];
             const data = [];
 
             jsonData.forEach(function (item) {
-                labels.push(item.month);
+
+                labels.push(item.month)
+                console.log(item.month);
                 data.push(item.total_price);
             });
 
