@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/orders', [OrderController::class, 'fetchOrders'])->name('orders');
+        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
 
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('dishes', DishController::class);

@@ -38,6 +38,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Indirizzo</th>
                     <th scope="col">Totale Ordine</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@
                         <td>{{ $order->email }}</td>
                         <td>{{ $order->address }}</td>
                         <td>{{ $order->total_price }} €</td>
+                        <td><a class="btn ms_btn" href="{{route('admin.orders.show', $order)}}">Dettagli</a></td>
                     </tr>
                 @endforeach
             </tbody>

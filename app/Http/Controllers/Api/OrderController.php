@@ -142,5 +142,12 @@ class OrderController extends Controller
         return view('admin.orders', compact('myOrders'));
     }
 
+    public function show(Order $order) {
+
+        // dd($order);
+
+        return view('admin.order-detail',compact ('order'));
+    }
+
 
 }
