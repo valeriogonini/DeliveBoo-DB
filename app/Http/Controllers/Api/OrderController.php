@@ -11,11 +11,15 @@ use App\Models\User;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Mail\OrderMailable;
 use Illuminate\Foundation\Http\FormRequest;
 use Psy\Readline\Hoa\Console;
+use App\Mail\OrderUserMail;
+use App\Mail\OrderRestaurantMail;
+
 
 
 
@@ -72,9 +76,9 @@ class OrderController extends Controller
         if ($result->success) {
             $data = [
                 'success' => true,
-                'message' => 'Transazione eseguita con successo!',
-                
-                
+                'message' => 'transazione eseguita con successo',
+
+
             ];
 
 
@@ -83,9 +87,19 @@ class OrderController extends Controller
             $order->fill($newOrder);
             $order->save();
 
-      
+            Mail::to($email)->send(new OrderUserMail($newOrder)); 
 
 
+            $restaurantId = $orderData[0]['restaurant_id'];
+            $restaurant = Restaurant::where('id', $restaurantId)->first();
+             $restaurant_mail = $restaurant->email;  
+            
+
+            // invio le mail di conferma al ristoratore
+            Mail::to($restaurant_mail)->send(new OrderRestaurantMail($newOrder)); 
+
+            // invio le mail di conferma all'utente
+            
 
             foreach ($orderData as $dish) {
                 // You can use the attach method if you have defined a many-to-many relationship in your Order model.
@@ -109,7 +123,8 @@ class OrderController extends Controller
 
     }
 
-    public function fetchOrders() {
+    public function fetchOrders()
+    {
 
         $user = Auth::user();
         $restaurant = $user->restaurant;
@@ -118,11 +133,11 @@ class OrderController extends Controller
         $dishIds = Dish::where('restaurant_id', $restaurant->id)->pluck('id');
 
         //recupero gli ordini legati al mio ristorante, tramite relazioni
-        $myOrders = Order::whereHas('dishes', function($query) use ($dishIds) {
+        $myOrders = Order::whereHas('dishes', function ($query) use ($dishIds) {
             $query->whereIn('dishes.id', $dishIds);
         })->get();
 
-        
+
 
         return view('admin.orders', compact('myOrders'));
     }
