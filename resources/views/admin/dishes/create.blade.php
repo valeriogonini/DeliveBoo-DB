@@ -62,7 +62,7 @@
 
             <div class="d-flex justify-content-end">
                 <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.index') }}">Indietro</a>
-                <button class="btn btn-warning ms_btn">Crea</button>
+                <button class="btn btn-bg ms_btn">Crea</button>
             </div>
 
             <div class="mt-3 required">
@@ -156,80 +156,6 @@
         });
     });
 
-
-    // document.addEventListener("DOMContentLoaded", function() {
-    //     const form = document.getElementById("createDishForm");
-    //     const nameField = document.getElementById("name");
-    //     const priceField = document.getElementById("price");
-
-    //     const nameError = document.getElementById("name-error");
-    //     const priceError = document.getElementById("price-error");
-
-    //     function validateField(field, errorElement, validationFn, errorMessage) {
-    //         field.addEventListener("input", function() {
-    //             const isValid = validationFn(field.value);
-    //             errorElement.innerText = isValid ? "" : errorMessage;
-    //             field.classList.toggle("is-invalid", !isValid);
-    //         });
-    //     }
-
-    //     function validateForm() {
-    //         let valid = true;
-
-    //         validateField(nameField, nameError, value => value.length >= 3, "Il nome deve avere almeno 3 caratteri.");
-    //         validateField(priceField, priceError, value => parseFloat(value) >= 0.01 && parseFloat(value) <= 9999.99, "Il prezzo deve essere compreso tra 0.01 e 9999.99.");
-
-    //         if (nameField.value.length < 3  !validateField(nameField, nameError)) {
-    //             nameError.innerText = "Il nome deve avere almeno 3 caratteri.";
-    //             nameField.classList.add("is-invalid");
-    //             valid = false;
-    //         } else {
-    //             nameError.innerText = "";
-    //             nameField.classList.remove("is-invalid");
-    //         }
-
-    //         const price = parseFloat(priceField.value);
-    //         if (isNaN(price)  price < 0.01 || price > 9999.99) {
-    //             priceError.innerText = "Il prezzo deve essere compreso tra 0.01 e 9999.99.";
-    //             priceField.classList.add("is-invalid");
-    //             valid = false;
-    //         } else {
-    //             priceError.innerText = "";
-    //             priceField.classList.remove("is-invalid");
-    //         }
-
-    //         return valid;
-    //     }
-
-    //     form.addEventListener("submit", function(event) {
-    //         if (!validateForm()) {
-    //             event.preventDefault(); // Previene l'invio del form se la validazione non è superata
-    //         }
-    //     });
-    // });
-
-    //  document.addEventListener("DOMContentLoaded", function() {
-    //         const form = document.getElementById("createDishForm");
-    //         form.addEventListener("submit", function(event) {
-    //             const name = document.getElementById("name").value;
-    //             const price = document.getElementById("price").value;
-    //             const errors = [];
-
-    //             if (name.lenght < 3) {
-    //                 errors.push("nome non valido");
-    //             }
-
-    //             if(price <= 0){
-    //                 errors.push("il prezzo non è valido");
-
-    //             }
-
-    //             if (errors.length > 0) {
-    //                 event.preventDefault(); // Previene l'invio del form
-    //                 alert(errors.join("\n"));
-    //             }
-    //         });
-    //     });
 </script>
 
 <style>
@@ -237,7 +163,24 @@
         color: white !important;
     }
 
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
+    }
     .required {
         color: red
     }
+    .back-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+}
+
+
 </style>

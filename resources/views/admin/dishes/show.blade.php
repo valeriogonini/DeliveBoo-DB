@@ -5,7 +5,7 @@
 <div class="container pt-5">
     <div class="card">
         <div class="row">
-            <div class="col-5">
+            <div class="col-sm-5">
                 <div class="justify-content-center d-flex align-items-center">
     
                     @if (!$dish->image)
@@ -36,7 +36,7 @@
     <div class="d-flex justify-content-between mt-3">
         <div>
             <a class="btn btn-secondary" href="{{ route('admin.dishes.index') }}">Indietro</a>
-            <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-warning ms_btn">Modifica</a>
+            <a href="{{ route('admin.dishes.edit', $dish)}}" class="btn btn-bg ms_btn">Modifica</a>
         </div>
         <div>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -82,5 +82,10 @@
 <style>
     .ms_btn:hover{
         color: white !important;
+    }
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
     }
 </style>

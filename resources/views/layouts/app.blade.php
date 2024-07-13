@@ -33,6 +33,13 @@
 
             color: #303030 !important;
         }
+        .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+    }
     </style>
 
 </head>
@@ -109,11 +116,12 @@
             </div>
         </nav>
 
-        <main class="">
+        <main>
             @yield('content')
         </main>
+
         <footer>
-            <div class="footer">
+            <div class=" footer mt-4">
                 <p>&copy; 2024 Deliveboo. Tutti i diritti riservati.</p>
             </div>
         </footer>

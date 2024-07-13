@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="mb-4 row">
-                                <div>Campi obbligatori*</div>
+                                <div class="text-danger">Campi obbligatori*</div>
                             </div>
                         </form>
                     </div>

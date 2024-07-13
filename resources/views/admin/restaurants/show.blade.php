@@ -3,8 +3,8 @@
 @section('content')
 <div class="container pt-5">
     <div class="card restaurant_card">
-        <div class="row" style="width:">
-            <div class="col-6">
+        <div class="row ">
+            <div class="col-12 col-sm-6">
                 @if (!$restaurant->image)
                     <img style="width:100%" src="../../img/notfound.png">
                 @else
@@ -14,7 +14,7 @@
 
             </div>
 
-            <div class="col-6">
+            <div class="col-12 col-sm-6">
                 <div class="card-body">
                     <h5 class="card-title my-3"><strong>Nome del ristorante: </strong> {{$restaurant->name}}</h5>
                     <p><strong>Email: </strong> {{$restaurant->email}}</p>
@@ -35,7 +35,7 @@
     </div>
     <div class="py-3 d-flex justify-content-between">
         <a class="btn btn-secondary me-2" href="{{ route('admin.dashboard') }}">Indietro</a>
-        <a class="btn btn-warning ms_btn" href="{{ route('admin.dishes.index') }}">Menu</a>
+        <a class="btn btn-bg ms_btn" href="{{ route('admin.dishes.index') }}">Menu</a>
     </div>
 </div>
 
@@ -47,6 +47,15 @@
     }
 
     .ms_btn:hover {
-        color: white !important;
+        background-color: #FAAF4D;
+        color: black !important;
     }
+
+     .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
+    }
+
+   
 </style>

@@ -34,23 +34,23 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome Cliente</th>
-                    <th scope="col">Numero di telefono</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Indirizzo</th>
-                    <th scope="col">Totale Ordine</th>
-                    <th></th>
+                    <th scope="col" class="d-none d-lg-block">Numero di telefono</th>
+                    <th scope="col" class="d-none d-lg-block">Email</th>
+                    <th scope="col" class="d-none d-lg-block">Indirizzo</th>
+                    <th scope="col" class="d-none d-lg-block">Totale Ordine</th>
+                    <th scope="col" > Dettagli</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($myOrders as $order)
                     <tr>
                         <th>{{ $order->id }}</th>
-                        <td>{{ $order->customer_name }}</td>
-                        <td>{{ $order->phone_number }}</td>
-                        <td>{{ $order->email }}</td>
-                        <td>{{ $order->address }}</td>
-                        <td>{{ $order->total_price }} €</td>
-                        <td><a class="btn ms_btn" href="{{route('admin.orders.show', $order)}}">Dettagli</a></td>
+                        <td >{{ $order->customer_name }}</td>
+                        <td class="d-none d-lg-block">{{ $order->phone_number }}</td>
+                        <td class="d-none d-lg-block">{{ $order->email }}</td>
+                        <td class="d-none d-lg-block">{{ $order->address }}</td>
+                        <td class="d-none d-lg-block">{{ $order->total_price }} €</td>
+                        <td><a class="btn btn-bg ms_btn" href="{{route('admin.orders.show', $order)}}">Dettagli</a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -153,6 +153,7 @@
 <style>
     .btn-bg {
         background-color: #FAAF4D;
+        color: white
 
     }
 
