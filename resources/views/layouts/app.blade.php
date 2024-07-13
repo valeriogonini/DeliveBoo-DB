@@ -112,6 +112,11 @@
         <main class="">
             @yield('content')
         </main>
+        <footer>
+            <div class="footer">
+                <p>&copy; 2024 Deliveboo. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
     </div>
 </body>
 
