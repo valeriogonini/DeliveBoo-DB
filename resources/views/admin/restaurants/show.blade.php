@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="py-3 d-flex justify-content-between">
-        <a class="btn btn-secondary me-2" href="{{ route('admin.dashboard') }}">Indietro</a>
+        <a class="btn btn-secondary me-2" href="{{ route('admin.restaurants.index' ) }}">Indietro</a>
         <a class="btn btn-bg ms_btn" href="{{ route('admin.dishes.index') }}">Menu</a>
     </div>
 </div>

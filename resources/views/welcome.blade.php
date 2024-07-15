@@ -106,7 +106,7 @@
     }
 
     .btn-cream:hover {
-        border: 1px solid black;
+       
         box-shadow: #333
     }
 

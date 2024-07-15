@@ -40,12 +40,18 @@
         padding: 10px 0;
         width: 100%;
     }
+
+    .app{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
     </style>
 
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="app">
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-orange shadow-sm">
@@ -116,7 +122,7 @@
             </div>
         </nav>
 
-        <main>
+        <main class="flex-grow-1">
             @yield('content')
         </main>
 

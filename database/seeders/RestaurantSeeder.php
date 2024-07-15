@@ -24,23 +24,23 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Da Mimmo',
                 'image' => '\uploads\trattoria-1024x768.jpg',
                 'email' => 'Mimmo@gmail.com',
-                'address' => 'via Mimmo 69',
+                'address' => 'via Mimmo 24',
                 'p_iva' => '1234578911',
 
             ],
             [
-                'name' => 'Da Pippo',
+                'name' => 'Non Solo Farina',
                 'image' => '\uploads\2022-08-26.jpg',
                 'email' => 'Pippo@gmail.com',
-                'address' => 'via Pippo 69',
+                'address' => 'via Diaz 35',
                 'p_iva' => '1234578910',
 
             ],
             [
-                'name' => 'Da Gennaro',
+                'name' => 'Braceria 360 gradi',
                 'image' => '\uploads\src_25591943.jpg',
                 'email' => 'Gennaro@gmail.com',
-                'address' => 'via Gennaro 69',
+                'address' => 'via Gennaro 32',
                 'p_iva' => '1234578912',
 
             ],
@@ -48,23 +48,23 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Burger King',
                 'image' => '\uploads\BK.jpg',
                 'email' => 'BK@gmail.com',
-                'address' => 'via BK 69',
+                'address' => 'via BK 45',
                 'p_iva' => '1234578913',
 
             ],
             [
-                'name' => 'Da Cosimo',
+                'name' => 'Pancrazio',
                 'image' => '\uploads\ristorante-pancrazio-rome-christmas-2048x1536.jpg',
                 'email' => 'Cosimo@gmail.com',
-                'address' => 'via Cosimo 69',
+                'address' => 'via Garibaldi 69',
                 'p_iva' => '1234578914',
 
             ],
             [
-                'name' => 'Da Pietro',
+                'name' => 'Verduriamo',
                 'image' => '\uploads\vegan.jpg',
                 'email' => 'Pietro@gmail.com',
-                'address' => 'via Pietro 69',
+                'address' => 'via Sempre Verde 12',
                 'p_iva' => '1234578915',
 
             ],
@@ -72,23 +72,23 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Da Luigi',
                 'image' => '\uploads\0f6f0f60-32bd-460e-9ab5-7c748cd37545.avif',
                 'email' => 'Luigi@gmail.com',
-                'address' => 'via Luigi 69',
+                'address' => 'via Militello 87',
                 'p_iva' => '1234578916',
 
             ],
             [
-                'name' => 'Da Giulio',
+                'name' => 'Hola Amigos',
                 'image' => '\uploads\messicanos.jpg',
                 'email' => 'Giulio@gmail.com',
-                'address' => 'via Giulio 69',
+                'address' => 'via Mariachi 68',
                 'p_iva' => '1234578917',
 
             ],
             [
-                'name' => 'Da Nicola',
+                'name' => 'Sora Cencia',
                 'image' => '\uploads\07f0f058-80d9-4b3e-8c4c-c1c935ad4679.jpg',
                 'email' => 'Nicola@gmail.com',
-                'address' => 'via Nicola 69',
+                'address' => 'via Marettimo 98',
                 'p_iva' => '1234578918',
 
             ],
@@ -96,7 +96,7 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Konnichiwa',
                 'image' => '\uploads\sushiR.jpg',
                 'email' => 'Konnichiwa@gmail.com',
-                'address' => 'via Konnichiwa 69',
+                'address' => 'via Delle Marmotte 96',
                 'p_iva' => '1234578919',
 
             ],
@@ -104,7 +104,7 @@ class RestaurantSeeder extends Seeder
                 'name' => 'Kebab Campus',
                 'image' => '\uploads\kebabbaro.jpg',
                 'email' => 'Mimmo11@gmail.com',
-                'address' => 'via Campus 69',
+                'address' => 'via Campus 18',
                 'p_iva' => '1234578920',
 
             ],

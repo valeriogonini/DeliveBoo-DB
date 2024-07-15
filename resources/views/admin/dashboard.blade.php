@@ -24,7 +24,7 @@
         @endforeach
     @else
         <h3>Non hai nessun ristorante</h3>
-        <a class="btn btn-warning ms_btn " href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
+        <a class="btn btn-bg ms_btn " href="{{ url('admin/restaurants/create') }}">Nuovo ristorante</a>
     @endif
 
     @if (isset($myOrders))
@@ -34,10 +34,10 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome Cliente</th>
-                    <th scope="col" class="d-none d-lg-block">Numero di telefono</th>
-                    <th scope="col" class="d-none d-lg-block">Email</th>
-                    <th scope="col" class="d-none d-lg-block">Indirizzo</th>
-                    <th scope="col" class="d-none d-lg-block">Totale Ordine</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Numero di telefono</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Email</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Indirizzo</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Totale Ordine</th>
                     <th scope="col" > Dettagli</th>
                 </tr>
             </thead>
@@ -46,18 +46,19 @@
                     <tr>
                         <th>{{ $order->id }}</th>
                         <td >{{ $order->customer_name }}</td>
-                        <td class="d-none d-lg-block">{{ $order->phone_number }}</td>
-                        <td class="d-none d-lg-block">{{ $order->email }}</td>
-                        <td class="d-none d-lg-block">{{ $order->address }}</td>
-                        <td class="d-none d-lg-block">{{ $order->total_price }} €</td>
+                        <td class="d-none d-lg-table-cell">{{ $order->phone_number }}</td>
+                        <td class="d-none d-lg-table-cell">{{ $order->email }}</td>
+                        <td class="d-none d-lg-table-cell">{{ $order->address }}</td>
+                        <td class="d-none d-lg-table-cell">{{ $order->total_price }} €</td>
                         <td><a class="btn btn-bg ms_btn" href="{{route('admin.orders.show', $order)}}">Dettagli</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-    @endif
+    
 
     <canvas id="bar-chart" width="800" height="400"></canvas>
+    @endif
 </div>
 
 
@@ -210,6 +211,11 @@
     .custom-table thead th {
         text-transform: uppercase;
         letter-spacing: 0.1em;
+    }
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
     }
 </style>
 @endsection

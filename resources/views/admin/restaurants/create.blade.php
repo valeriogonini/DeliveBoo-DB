@@ -69,7 +69,7 @@
 
             <div class="d-flex justify-content-end">
                 <a class="btn btn-secondary mx-2" href="{{ route('admin.restaurants.index') }}">Indietro</a>
-                <button class="btn btn-warning">Crea Ristorante</button>
+                <button class="btn btn-bg">Crea Ristorante</button>
             </div>
 
             <div class="mb-3 required">
@@ -195,5 +195,10 @@
     }
     .required {
         color: red
+    }
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
     }
 </style>

@@ -17,7 +17,7 @@
     
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-sm-7">
                 <div class="card-body">
                     <h5 class="my-1 card-title"><strong>Nome:</strong> {{$dish->name}}</h5>
                     <p class="my-1"><strong>Disponibilità:</strong>

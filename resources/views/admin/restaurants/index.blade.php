@@ -26,7 +26,7 @@
                     </div>
 
                     <a href="{{ route('admin.restaurants.show', $restaurant) }}"
-                        class="btn ms_btn btn-warning me-0 ms-auto align-self-center" style="">Dettagli</a>
+                        class="btn ms_btn btn-bg me-0 ms-auto align-self-center" style="">Dettagli</a>
                 </div>
             </div>
         @endforeach
@@ -50,5 +50,10 @@
 
     .ms_new_btn:hover {
         color: white !important;
+    }
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
     }
 </style>

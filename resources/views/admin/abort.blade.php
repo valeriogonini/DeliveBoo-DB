@@ -23,7 +23,7 @@
 
 <style>
     img {
-        width: 700px;
+        max-width: 100%;
     }
 </style>
 

@@ -66,7 +66,7 @@
 
         <div class="d-flex justify-content-end">
             <a class="btn btn-secondary mx-2" href="{{ route('admin.dishes.show', $dish) }}">Indietro</a>
-            <button class="btn btn-warning ms_btn">Modifica</button>
+            <button class="btn btn-bg ms_btn">Modifica</button>
         </div>
 
         <div class="mt-3 required">
@@ -162,6 +162,11 @@
 
     .required {
         color: red
+    }
+    .btn-bg {
+        background-color: #FAAF4D !important;
+        color: white;
+
     }
     
 </style>

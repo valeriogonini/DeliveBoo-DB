@@ -16,13 +16,13 @@ class RestaurantypeSeeder extends Seeder
     {
        // Recupera i ristoranti
        $restaurantA = Restaurant::where('name', 'Da Mimmo')->first();
-       $restaurantB = Restaurant::where('name', 'Da Pippo')->first();
-       $restaurantC = Restaurant::where('name', 'Da Gennaro')->first();
-       $restaurantD = Restaurant::where('name', 'Da Cosimo')->first();
-       $restaurantE = Restaurant::where('name', 'Da Pietro')->first();
+       $restaurantB = Restaurant::where('name', 'Non Solo Farina')->first();
+       $restaurantC = Restaurant::where('name', 'Braceria 360 gradi')->first();
+       $restaurantD = Restaurant::where('name', 'Pancrazio')->first();
+       $restaurantE = Restaurant::where('name', 'Verduriamo')->first();
        $restaurantF = Restaurant::where('name', 'Da Luigi')->first();
-       $restaurantG = Restaurant::where('name', 'Da Giulio')->first();
-       $restaurantH = Restaurant::where('name', 'Da Nicola')->first();
+       $restaurantG = Restaurant::where('name', 'Hola Amigos')->first();
+       $restaurantH = Restaurant::where('name', 'Sora Cencia')->first();
        $restaurantI = Restaurant::where('name', 'Konnichiwa')->first();
        $restaurantL = Restaurant::where('name', 'Kebab Campus')->first();
        $restaurantM = Restaurant::where('name', 'Burger King')->first();
