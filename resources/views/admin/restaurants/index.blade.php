@@ -11,12 +11,15 @@
     @else
         @foreach($restaurants as $restaurant)
             <div class="card mb-2 restaurant_card" style="max-width: 1000px">
-                @if (!$restaurant->image)
+                <div class="card-head">
+                    @if (!$restaurant->image)
                     <img style="width:100%" src="../../img/notfound.png">
                 @else
                     <img src="{{asset('storage/' . $restaurant->image)}}" class="card-img-top" alt="{{ $restaurant->name }}"
                         style="">
                 @endif
+                </div>
+               
 
 
                 <div class="card-body d-flex">
@@ -36,6 +39,15 @@
 @endsection
 
 <style lang="scss" scoped>
+    .card-img-top{
+      height: 100%;
+      object-fit: cover;
+    }
+    .card-head{
+        height: 450px;
+        width: 100%;
+    }
+    
     .restaurant_card {
         box-shadow: 0 0 8px lightgrey;
     }
